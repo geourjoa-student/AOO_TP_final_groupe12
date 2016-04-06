@@ -1,2 +1,2 @@
-public class Oux extends Transformateur {
+public class Oux extends Composite {
 }

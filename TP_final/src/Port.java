@@ -1,7 +1,15 @@
 public abstract class Port {
 
-  public Integer id_port;
+	private Integer id_port;
 
-  public proprietairePort;
+	private Composant proprietairePort;
+
+	public Integer getId_port() {
+		return id_port;
+	}
+
+	public Composant getProprietairePort() {
+		return proprietairePort;
+	}
 
 }

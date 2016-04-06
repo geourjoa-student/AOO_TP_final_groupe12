@@ -1,5 +1,15 @@
+import java.util.List;
+
 public class PortSortie extends Port {
 
-  public Port listePortConnectes;
+  private List<PortEntree> listePortEntreeConnectes;
+
+  public List<PortEntree> getListePortEntreeConnectes() {
+	  return listePortEntreeConnectes;
+  }
+  
+  
+  
+  
 
 }
