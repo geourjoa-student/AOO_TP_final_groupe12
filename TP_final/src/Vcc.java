@@ -7,7 +7,7 @@ public class Vcc extends Generateur {
 
 	public Vcc() {
 		portsSorties = new PortSortie[1];
-		portsSorties[0].setValeur(false);
+		portsSorties[0].setValeur(true);
 		id = Elementaire.getNbOccurence();
 	}
 

@@ -7,7 +7,7 @@ public class Gnd extends Generateur {
 
 	public Gnd() {
 		portsSorties = new PortSortie[1];
-		portsSorties[0].setValeur(true);
+		portsSorties[0].setValeur(false);
 		id = Elementaire.getNbOccurence();
 	}
 
