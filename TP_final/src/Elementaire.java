@@ -1,38 +1,41 @@
+public abstract class Elementaire implements Composant {
 
-import java.util.List;
+	protected int id;
 
+	protected PortEntree[] portsEntrees;
 
+	protected PortSortie[] portsSorties;
 
-public abstract class Elementaire implements Composant{
-	
-	private int id;
+	private static int nbOccurence = 0;
 
-	protected List<PortEntree> portsEntrees;
+	protected static int getNbOccurence()
+	{
+		nbOccurence++;
+		return nbOccurence;
+	}
 
-	protected List<PortSortie> portsSorties;
-	
-	public int getId () {
+	public int getId()
+	{
 		return id;
 	}
 
 	@Override
-	public String toString() {
-		String s = "<" + id + "| nomClasse (" + portsEntrees.size() + "," + portsSorties.size() + ")->" ;
-		
-		for (PortSortie portCourant : portsSorties) {
-					
-			s += "#" + portCourant.getId_port();
-			
-			for (PortEntree portEntreeCourant : portCourant.getListePortEntreeConnectes()) {			
-				s+= portEntreeCourant.getProprietairePort().getId() + "#" + portEntreeCourant.getId_port() +",";					 	
+	public String toString()
+	{
+		String s = "<" + id + "| nomClasse (" + portsEntrees.length + "," + portsSorties.length + ")->";
+
+		for (int i = 0; i < portsEntrees.length; i++) 
+		{
+			s += "#" + portsSorties[i].getId_port();
+			for (int j = 0; j < portsEntrees.length; j++) 
+			{
+				s += portsEntrees[i].getProprietairePort().getId() + "#" + portsEntrees[i].getId_port() + ",";
 			}
 		}
-		
+
 		s += ">";
-				
+
 		return s;
 	}
-	
-	
 
 }
