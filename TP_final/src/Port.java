@@ -1,5 +1,7 @@
 public abstract class Port {
 
+	private boolean valeur;
+	
 	private Integer id_port;
 
 	private Composant proprietairePort;
@@ -12,4 +14,14 @@ public abstract class Port {
 		return proprietairePort;
 	}
 
+	public boolean isValeur() {
+		return valeur;
+	}
+
+	public void setValeur(boolean valeur) {
+		this.valeur = valeur;
+	}
+
+	
+	
 }

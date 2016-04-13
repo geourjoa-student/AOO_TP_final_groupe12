@@ -7,9 +7,9 @@ public abstract class Elementaire implements Composant{
 	
 	private int id;
 
-	private List<PortEntree> portsEntrees;
+	protected List<PortEntree> portsEntrees;
 
-	private List<PortSortie> portsSorties;
+	protected List<PortSortie> portsSorties;
 	
 	public int getId () {
 		return id;
