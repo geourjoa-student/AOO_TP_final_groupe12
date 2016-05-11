@@ -1,3 +1,4 @@
+
 import java.util.Iterator;
 
 public class Ou extends Transformateur {
@@ -6,12 +7,19 @@ public class Ou extends Transformateur {
 	public void calculerSorties() 
 	{
 		this.portsSorties[0].setValeur(this.portsEntrees[0].isValeur() || this.portsEntrees[1].isValeur());
+		portsSorties[0].propagerValeur();
 	}
 	
 	public Ou (int id){
 	
 		portsEntrees = new PortEntree[2];
 		portsSorties = new PortSortie[1];
+		
+		portsEntrees[0] = new PortEntree(this, 0);
+		portsEntrees[1] = new PortEntree(this, 1);
+
+		portsSorties[0] = new PortSortie(this, 0);
+		
 		this.id = id;
 	}
 

@@ -1,3 +1,4 @@
+
 public class Itr extends Generateur {
 
 	private Boolean ferme;
@@ -16,11 +17,14 @@ public class Itr extends Generateur {
 	public void calculerSorties()
 	{
 		this.portsSorties[0].setValeur(this.portsEntrees[0].isValeur() && !this.estFerme());
+		portsSorties[0].propagerValeur();
 	}
 
 	public Itr(int id){
 		portsEntrees = new PortEntree[1];
+		portsEntrees[0] = new PortEntree(this,0);
 		portsSorties = new PortSortie[1];
+		portsSorties[0] = new PortSortie(this,0);
 		ferme = true;
 		this.id = id;
 	}
@@ -28,8 +32,8 @@ public class Itr extends Generateur {
 	@Override
 	public String toString()
 	{
-		//TODO: TESTER LA TERNACITE DE L'OPERATEUR
-		String s = "<" + id + "| nomClasse (" + portsEntrees.length + "," + portsSorties.length + "){" + ((ferme)?"ferme":"ouvert") + "}->";
+
+		String s = "<" + id + "| Itr (" + portsEntrees.length + "," + portsSorties.length + "){" + ((ferme)?"ferme":"ouvert") + "}->";
 
 		for (int i = 0; i < portsEntrees.length; i++) 
 		{
