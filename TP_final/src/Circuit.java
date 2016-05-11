@@ -2,14 +2,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Circuit {
-	
+
 	private String nomCircuit;
 
-	public Map<Integer,Composant> composants;
-	
+	public Map<Integer, Composant> composants;
+
 	public Circuit(String nomCircuit) {
 		this.nomCircuit = nomCircuit;
-		
+
 		this.composants = new HashMap<Integer, Composant>();
 	}
 
@@ -17,37 +17,38 @@ public class Circuit {
 		composants.put(c.getId(), c);
 	}
 
-	@Override
-	public String toString() {
-		
-		String s = nomCircuit + "[\n";
-		
-		for (Composant c : composants.values()) {
-			s+= "\t" + c + "\n";
-		}
-		
-		return  s + "]\n";		
-	}
+	public void cabler(int idComposantPortSortie, int numeroPortSortie, int idComposantPortEntree,
+			int numeroPortEntre) {
 
-	public void cabler(int idComposantPortSortie, int numeroPortSortie, int idComposantPortEntree, int numeroPortEntre){
-		
 		Composant cs = (Composant) composants.get(idComposantPortSortie);
 		Composant ce = (Composant) composants.get(idComposantPortEntree);
-		
-		cs.getNiemePortSortie(numeroPortSortie).ajouterConnexion(ce.getNiemePortEntree(numeroPortEntre));	
-		
+
+		cs.getNiemePortSortie(numeroPortSortie).ajouterConnexion(ce.getNiemePortEntree(numeroPortEntre));
+
 	}
-	
 
 	public void execute() {
-	
-		//La première boucle permet auporte de se stabiliser quelque soit l'ordre des execute
+
+		// La première boucle permet aux portes de se stabiliser quelque soit
+		// l'ordre des execute
 		for (int i = 0; i < composants.size(); i++) {
 			for (Composant c : composants.values()) {
 				c.calculerSorties();
 			}
-		}	
-		
+		}
+
 	}
-	
+
+	@Override
+	public String toString() {
+
+		String s = nomCircuit + "[\n";
+
+		for (Composant c : composants.values()) {
+			s += "\t" + c + "\n";
+		}
+
+		return s + "]\n";
+	}
+
 }

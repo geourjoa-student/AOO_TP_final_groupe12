@@ -9,6 +9,14 @@ public class Composite extends Circuit {
 
 	public PortSortie portsSorties;
 	
+	public void definirPortEntreeComposant(PortEntree pe, int numeroPort){
+		
+	}
+	
+	public void definirPortSortieComposant(PortSortie ps, int numeroPort){
+		
+	}
+	
 	
 
 }

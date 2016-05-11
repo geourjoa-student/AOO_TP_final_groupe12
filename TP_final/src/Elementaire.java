@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public abstract class Elementaire implements Composant {
 
 	protected int id;
@@ -20,18 +18,6 @@ public abstract class Elementaire implements Composant {
 	@Override
 	public PortEntree getNiemePortEntree(int n) {
 		return portsEntrees[n];
-	}
-
-	@Override
-	public void definirPortEntreeComposant(PortEntree pe, int numeroPort) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void definirPortSortieComposant(PortSortie ps, int numeroPort) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }
