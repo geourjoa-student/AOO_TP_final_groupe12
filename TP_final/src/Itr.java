@@ -18,11 +18,11 @@ public class Itr extends Generateur {
 		this.portsSorties[0].setValeur(this.portsEntrees[0].isValeur() && !this.estFerme());
 	}
 
-	public Itr() {
+	public Itr(int id){
 		portsEntrees = new PortEntree[1];
 		portsSorties = new PortSortie[1];
 		ferme = true;
-		id = Elementaire.getNbOccurence();
+		this.id = id;
 	}
 
 	@Override

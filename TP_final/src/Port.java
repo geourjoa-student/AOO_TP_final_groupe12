@@ -1,10 +1,10 @@
 public abstract class Port {
 
-	private boolean valeur;
+	protected boolean valeur;
 	
-	private Integer id_port;
+	protected Integer id_port;
 
-	private Composant proprietairePort;
+	protected Composant proprietairePort;
 
 	public Integer getId_port() {
 		return id_port;

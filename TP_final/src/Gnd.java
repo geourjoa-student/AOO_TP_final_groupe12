@@ -5,10 +5,10 @@ public class Gnd extends Generateur {
 
 	}
 
-	public Gnd() {
+	public Gnd(int id) {
 		portsSorties = new PortSortie[1];
 		portsSorties[0].setValeur(false);
-		id = Elementaire.getNbOccurence();
+		this.id = id;
 	}
 
 }

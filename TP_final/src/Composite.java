@@ -1,7 +1,14 @@
 public class Composite extends Circuit {
 
-  public PortEntree portsEntrees;
+	public Composite(String nomCircuit) {
+		super(nomCircuit);
+		// TODO Auto-generated constructor stub
+	}
 
-  public PortSortie portsSorties;
+	public PortEntree portsEntrees;
+
+	public PortSortie portsSorties;
+	
+	
 
 }
