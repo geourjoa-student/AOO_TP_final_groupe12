@@ -1,3 +1,5 @@
+package projet.composant;
+import projet.port.PortSortie;
 
 public class Gnd extends Generateur {
 	@Override

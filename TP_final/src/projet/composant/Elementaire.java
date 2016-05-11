@@ -1,3 +1,7 @@
+package projet.composant;
+import projet.port.PortEntree;
+import projet.port.PortSortie;
+
 public abstract class Elementaire implements Composant {
 
 	protected int id;

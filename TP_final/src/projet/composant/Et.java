@@ -1,5 +1,9 @@
+package projet.composant;
 
 import java.util.Iterator;
+
+import projet.port.PortEntree;
+import projet.port.PortSortie;
 
 public class Et extends Transformateur {
 
@@ -24,8 +28,7 @@ public class Et extends Transformateur {
 	@Override
 	public String toString() {
 
-		String s = "<" + id + "| Et (" + portsEntrees.length + "," + portsSorties.length + ") -> "
-				+ portsSorties[0].isValeur();
+		String s = "<" + id + "| Et (" + portsEntrees.length + "," + portsSorties.length + ") -> ";
 
 		for (int i = 0; i < portsSorties.length; i++) {
 			s += "#" + portsSorties[i].getId_port() + "(";

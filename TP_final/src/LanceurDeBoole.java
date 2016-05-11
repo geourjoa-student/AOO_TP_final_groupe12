@@ -1,3 +1,5 @@
+import projet.composant.*;
+
 public class LanceurDeBoole {
 
 	public static void main(String[] args) {

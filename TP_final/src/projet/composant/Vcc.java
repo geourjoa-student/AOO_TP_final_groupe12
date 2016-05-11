@@ -1,34 +1,36 @@
+package projet.composant;
+
 
 import java.util.Iterator;
 
-public class Ou extends Transformateur {
+import projet.port.PortEntree;
+import projet.port.PortSortie;
 
+public class Vcc extends Generateur {
+	
+	//static final private int nbPortsSorties = 1;
+	
 	@Override
-	public void calculerSorties() 
+	public void calculerSorties()
 	{
-		this.portsSorties[0].setValeur(this.portsEntrees[0].isValeur() || this.portsEntrees[1].isValeur());
 		portsSorties[0].propagerValeur();
 	}
-	
-	public Ou (int id){
-	
-		portsEntrees = new PortEntree[2];
+
+	public Vcc(int id) {
 		portsSorties = new PortSortie[1];
 		
-		portsEntrees[0] = new PortEntree(this, 0);
-		portsEntrees[1] = new PortEntree(this, 1);
-
-		portsSorties[0] = new PortSortie(this, 0);
+		portsSorties[0] = new PortSortie(this,0);
 		
+		portsSorties[0].setValeur(true);
 		this.id = id;
 	}
 
 	@Override
 	public String toString()
 	{
-		
+		//String s = "<" + id + "| nomClasse (" + portsEntrees.length + "," + portsSorties.length + ")->";
 
-		String s = "<" + id + "| Ou (" +  portsEntrees.length + "," +  portsSorties.length + ") -> ";
+		String s = "<" + id + "| Vcc (" +  0 + "," +  portsSorties.length + ") -> ";
 
 		for (int i = 0; i < portsSorties.length; i++) 
 		{
@@ -38,7 +40,7 @@ public class Ou extends Transformateur {
 				PortEntree pe = it.next();
 				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port() + ",";				
 			}		
-			s+=")";			
+			s+=")";	
 		}
 
 		s += ">";

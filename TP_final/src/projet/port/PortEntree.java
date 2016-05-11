@@ -1,3 +1,6 @@
+package projet.port;
+import projet.composant.Composant;
+
 public class PortEntree extends Port {
 
 	public Port composantConnecte;

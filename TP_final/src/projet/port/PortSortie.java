@@ -1,6 +1,9 @@
+package projet.port;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import projet.composant.Composant;
 
 public class PortSortie extends Port {
 

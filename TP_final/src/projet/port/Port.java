@@ -1,3 +1,6 @@
+package projet.port;
+import projet.composant.Composant;
+
 public abstract class Port {
 
 	protected boolean valeur;
