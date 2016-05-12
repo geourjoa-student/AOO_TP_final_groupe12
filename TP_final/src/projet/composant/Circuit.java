@@ -4,14 +4,15 @@ import java.util.Map;
 
 public class Circuit {
 
-	private String nomCircuit;
+	protected String nomCircuit;
 
-	public Map<Integer, Composant> composants;
+	protected Map<Integer, Composant> composants;
 
 	public Circuit(String nomCircuit) {
 		this.nomCircuit = nomCircuit;
 
 		this.composants = new HashMap<Integer, Composant>();
+		
 	}
 
 	public void ajouterComposant(Composant c) {
