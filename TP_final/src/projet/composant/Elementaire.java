@@ -9,6 +9,8 @@ public abstract class Elementaire implements Composant {
 	protected PortEntree[] portsEntrees;
 
 	protected PortSortie[] portsSorties;
+	
+	protected int profondeur;
 
 	public int getId()
 	{
@@ -24,4 +26,7 @@ public abstract class Elementaire implements Composant {
 		return portsEntrees[n];
 	}
 	
+	public void setProfondeur(int profondeur) {
+		this.profondeur = profondeur;
+	}
 }
