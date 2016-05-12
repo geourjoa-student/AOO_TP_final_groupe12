@@ -5,6 +5,18 @@ public class LanceurDeBoole {
 	public static void main(String[] args) {
 		
 		Circuit monCircuit = new Circuit("monCircuit");
+		Circuit monCircuit2 = new Circuit("monCircuit2");
+		
+		/* Circuit 1
+		 * 
+		 * Vcc--------ET---LED
+		 * 			|-
+		 * Vcc--ET--|
+		 * Gnd--
+		 * 
+		 */
+		
+		/*
 		
 		Et et1 = new Et(1);
 		Vcc vcc= new Vcc(2);
@@ -30,6 +42,37 @@ public class LanceurDeBoole {
 		monCircuit.execute();
 		
 		System.out.println(monCircuit.toString());
+		
+		*/
+		
+		Vcc vcc2= new Vcc(6);
+		Led led2 = new Led(7);
+		Et et3 = new Et(8);
+		Non non = new Non(9);
+		Composite nand = new Composite("Nand", 10, 2, 1);
+		
+		Gnd gnd2 = new Gnd(11);
+		
+		nand.ajouterComposant(et3);
+		nand.ajouterComposant(non);
+		
+		nand.cabler(8, 0, 9, 0);
+		nand.definirPortEntreeComposant(8, 0, 0);
+		nand.definirPortEntreeComposant(8, 1, 1);
+		nand.definirPortSortieComposant(9, 0, 0);
+		
+		monCircuit2.ajouterComposant(nand);
+		monCircuit2.ajouterComposant(vcc2);
+		monCircuit2.ajouterComposant(led2);
+		monCircuit2.ajouterComposant(gnd2);
+		
+		monCircuit2.cabler(6, 0, 10, 0);
+		monCircuit2.cabler(11, 0, 10, 1);
+		monCircuit2.cabler(10, 0, 7, 0);
+		
+		monCircuit2.execute();
+		
+		System.out.println(monCircuit2);
 		
 		
 	}
