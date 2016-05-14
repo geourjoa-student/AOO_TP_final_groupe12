@@ -1,4 +1,6 @@
 package projet.composant;
+import java.util.Iterator;
+
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
@@ -28,5 +30,9 @@ public abstract class Elementaire implements Composant {
 	
 	public void setProfondeur(int profondeur) {
 		this.profondeur = profondeur;
+	}
+	
+	public boolean portsTousConnectes(){
+		return true;
 	}
 }

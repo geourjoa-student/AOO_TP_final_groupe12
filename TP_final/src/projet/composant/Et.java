@@ -1,5 +1,7 @@
 package projet.composant;
 
+
+
 import java.util.Iterator;
 
 import projet.port.PortEntree;
@@ -25,6 +27,7 @@ public class Et extends Transformateur {
 		this.portsSorties[0].propagerValeur();
 	}
 
+
 	@Override
 	public String toString() {
 
@@ -44,4 +47,5 @@ public class Et extends Transformateur {
 
 		return s;
 	}
+
 }

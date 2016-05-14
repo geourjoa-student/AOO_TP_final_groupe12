@@ -15,4 +15,6 @@ public interface Composant {
 	
 	public PortEntree getNiemePortEntree(int n);
 	
+	public boolean portsTousConnectes();
+	
 }

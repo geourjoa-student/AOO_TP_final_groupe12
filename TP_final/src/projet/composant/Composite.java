@@ -45,7 +45,12 @@ public class Composite extends Circuit implements Composant{
 
 	@Override
 	public void calculerSorties() {
-		execute();
+		try {
+			execute();
+		} catch (Exception e) {
+			//TODO Normalement cette exception est impossible
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -65,5 +70,8 @@ public class Composite extends Circuit implements Composant{
 		this.profondeur = profondeur;
 	}
 
+	public boolean portsTousConnectes(){
+		return true;
+	}
 	
 }

@@ -4,8 +4,8 @@ public class LanceurDeBoole {
 
 	public static void main(String[] args) {
 		
-		Circuit monCircuit = new Circuit("monCircuit");
-		Circuit monCircuit2 = new Circuit("monCircuit2");
+		
+		
 		
 		/* Circuit 1
 		 * 
@@ -17,6 +17,8 @@ public class LanceurDeBoole {
 		 */
 		
 		/*
+		
+		Circuit monCircuit = new Circuit("monCircuit");
 		
 		Et et1 = new Et(1);
 		Vcc vcc= new Vcc(2);
@@ -38,12 +40,18 @@ public class LanceurDeBoole {
 		monCircuit.cabler(4,0,1,1);
 		monCircuit.cabler(1,0,3,0);		
 		
-		//On execute le circuit
-		monCircuit.execute();
+		try {
+			monCircuit.execute();
+		} catch (Exception e) {
+			
+			System.out.println("Le circuit n'est pas complet");
+		}
 		
 		System.out.println(monCircuit.toString());
 		
 		*/
+		
+		Circuit monCircuit2 = new Circuit("monCircuit2");
 		
 		Vcc vcc2= new Vcc(6);
 		Led led2 = new Led(7);
@@ -70,7 +78,12 @@ public class LanceurDeBoole {
 		monCircuit2.cabler(11, 0, 10, 1);
 		monCircuit2.cabler(10, 0, 7, 0);
 		
-		monCircuit2.execute();
+		try {
+			monCircuit2.execute();
+		} catch (Exception e) {
+			
+			System.out.println("Le circuit n'est pas complet");
+		}
 		
 		System.out.println(monCircuit2);
 		

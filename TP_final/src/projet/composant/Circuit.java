@@ -29,7 +29,12 @@ public class Circuit {
 
 	}
 
-	public void execute() {
+	public void execute() throws Exception {
+		
+		//TODO	Ajouter système require
+		if(this instanceof Circuit)
+			if (!estComplet())
+				throw new Exception();
 
 		// La première boucle permet aux portes de se stabiliser quelque soit
 		// l'ordre des execute
@@ -40,6 +45,17 @@ public class Circuit {
 		}
 
 	}
+	
+	private boolean estComplet(){
+		
+		boolean complet = true;
+		
+		for (Composant c : composants.values()) {
+			complet &= c.portsTousConnectes();
+		}
+		
+		return complet;
+	}
 
 	@Override
 	public String toString() {
@@ -49,8 +65,17 @@ public class Circuit {
 		for (Composant c : composants.values()) {
 			s += "\t" + c + "\n";
 		}
+		
+		
 
-		return s + "]\n";
+		s += "]\n\n";
+		
+		if(estComplet())
+			s+= "Le circuit est complet.\n";
+		else
+			s+= "Le circuit n'est pas complet.\n";	
+		
+		return s;
 	}
 
 }
