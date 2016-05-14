@@ -84,3 +84,4 @@ XOR
 	oux.definirPortEntreeComposant(6, 0, 0);
 	oux.definirPortEntreeComposant(7, 0, 1);
 	oux.definirPortSortieComposant(5, 0, 0);	
+	
