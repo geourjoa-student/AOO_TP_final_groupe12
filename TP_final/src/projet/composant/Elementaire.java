@@ -1,5 +1,4 @@
 package projet.composant;
-import java.util.Iterator;
 
 import projet.port.PortEntree;
 import projet.port.PortSortie;
@@ -11,8 +10,6 @@ public abstract class Elementaire implements Composant {
 	protected PortEntree[] portsEntrees;
 
 	protected PortSortie[] portsSorties;
-	
-	protected int profondeur;
 
 	public int getId()
 	{
@@ -26,10 +23,6 @@ public abstract class Elementaire implements Composant {
 	@Override
 	public PortEntree getNiemePortEntree(int n) {
 		return portsEntrees[n];
-	}
-	
-	public void setProfondeur(int profondeur) {
-		this.profondeur = profondeur;
 	}
 	
 	public boolean portsTousConnectes(){

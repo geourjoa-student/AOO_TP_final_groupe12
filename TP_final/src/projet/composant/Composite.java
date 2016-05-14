@@ -1,5 +1,7 @@
 package projet.composant;
 
+import java.util.Iterator;
+
 import projet.composant.Circuit;
 import projet.port.PortEntree;
 import projet.port.PortSortie;
@@ -14,11 +16,13 @@ public class Composite extends Circuit implements Composant{
 
 	public PortSortie[] portsSorties;
 
-	public Composite(String nomComposant, int id, int nbPortsEntree, int nbPortsSortie) {
+	public Composite(String nomComposant, int id, int nbPortsEntree, int nbPortsSortie, int profondeur) {
 		super(nomComposant);
 
 		portsEntrees = new PortEntree[nbPortsEntree];
 		portsSorties = new PortSortie[nbPortsSortie];
+		
+		this.profondeur=profondeur;
 		
 		this.id = id;
 		
@@ -71,7 +75,48 @@ public class Composite extends Circuit implements Composant{
 	}
 
 	public boolean portsTousConnectes(){
+		//TODO a implementer
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+
+		String s = "<" + id + "| " + nomCircuit + " (" + portsEntrees.length + "," + portsSorties.length + ")[\n";
+
+		
+		for (Composant c : composants.values()) {
+			
+			for (int i = 0; i <= profondeur; i++) {
+				s+= "\t";			
+			}
+			
+			s += c + "\n";
+		}
+		
+		for (int i = 0; i < profondeur; i++) {
+			s+= "\t";			
+		}
+		
+		s+= "]-> ";
+		
+		for (int i = 0; i < portsSorties.length; i++) {
+			s += "#" + portsSorties[i].getId_port() + "(";
+
+			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
+				PortEntree pe = it.next();
+				s += pe.getProprietairePort().getId() + "#" + pe.getId_port();
+				
+				if(it.hasNext()){
+					s+= ",";
+				}
+			}
+			s += ")";
+		}
+
+		s += ">";
+
+		return s;
 	}
 	
 }

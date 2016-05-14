@@ -39,7 +39,11 @@ public class Led extends Recepteur {
 		for (int i = 0; i < portsEntrees.length; i++) {
 			s += "#" + portsSorties[i].getId_port() + "(";
 			for (int j = 0; j < portsEntrees.length; j++) {
-				s += portsEntrees[i].getProprietairePort().getId() + "#" + portsEntrees[i].getId_port() + ",";
+				s += portsEntrees[i].getProprietairePort().getId() + "#" + portsEntrees[i].getId_port() ;
+				
+				if(j==portsEntrees.length){
+					s+= ",";
+				}
 			}
 			s+=")";
 		}

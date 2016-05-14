@@ -25,7 +25,6 @@ public class Itr extends Generateur {
 	@Override
 	public void calculerSorties()
 	{
-		changerEtat();
 		this.portsSorties[0].setValeur(etat);
 		portsSorties[0].propagerValeur();
 	}
@@ -49,7 +48,11 @@ public class Itr extends Generateur {
 					
 			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
 				PortEntree pe = it.next();
-				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port() + ",";				
+				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port(); 
+				
+				if(it.hasNext()){
+					s+= ",";
+				}
 			}		
 			s+=")";	
 		}

@@ -37,7 +37,11 @@ public class Non extends Transformateur {
 					
 			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
 				PortEntree pe = it.next();
-				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port() + ",";				
+				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port();	
+				
+				if(it.hasNext()){
+					s+= ",";
+				}
 			}		
 			s+=")";	
 		}
