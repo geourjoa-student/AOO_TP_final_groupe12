@@ -1,0 +1,27 @@
+Listes des taches : 13/04
+
+--------------------------------------
+Écrire le kernel d'un système booléen : En partie fonctionnel mais à améliorer
+--------------------------------------
+	-Améliorer le toString des composites et des élémentaires (généraliser)
+	
+	-Écrire les instructions permettant de créer : xor, nor, nand
+	
+	-Ajouter des sécurités aux accesseurs
+	
+	-Ajouter le fonctionnement des génerateurs ('en marche / arret', interrupteur)
+	
+	-Classe circuit rajouter un test que tous les ports soient cablés
+
+	-Ajouter un système pour que les ID soit automatiquement calculé
+-----------------------------------------------
+Écrire une classe de test pour les composants : Non traité
+-----------------------------------------------
+
+--------------------------------------------
+Écrire un parser de compsosant (version 1) :  Non traité
+--------------------------------------------
+
+--------------------------------------------
+Écrire un parser de compsosant (version 2) :  Non traité
+--------------------------------------------

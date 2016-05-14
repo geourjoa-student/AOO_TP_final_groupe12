@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Circuit {
-
+	
 	protected String nomCircuit;
 
 	protected Map<Integer, Composant> composants;

@@ -1,0 +1,86 @@
+Instruction de création de composite :
+
+1.Création des élementaires 
+2.Création du composite
+3.Insertion des sous-composants
+4.Cablage
+5.Définition des ports d'entrées et sorties
+
+
+NAND
+	//Création des élementaires 
+
+	Et et = new Et(1);
+	Non non = new Non(2);
+	
+	//Création du composite
+	Composite nand = new Composite("Nand", 1, 2, 1);
+	
+	//Insertion des sous-composants
+	nand.ajouterComposant(et);
+	nand.ajouterComposant(non);
+	
+	//Cablage
+	nand.cabler(1, 0, 2, 0);
+	
+	//Définition des ports d'entrées et sorties
+	nand.definirPortEntreeComposant(1, 0, 0);
+	nand.definirPortEntreeComposant(1, 1, 1);
+	nand.definirPortSortieComposant(2, 0, 0);
+	
+NOR
+	//Création des élementaires 
+
+	Ou ou = new Ou(1);
+	Non non = new Non(2);
+	
+	//Création du composite
+	Composite nor = new Composite("Nor", 1, 2, 1);
+	
+	//Insertion des sous-composants
+	nor.ajouterComposant(et);
+	nor.ajouterComposant(non);
+	
+	//Cablage
+	nor.cabler(1, 0, 2, 0);
+	
+	//Définition des ports d'entrées et sorties
+	nor.definirPortEntreeComposant(1, 0, 0);
+	nor.definirPortEntreeComposant(1, 1, 1);
+	nor.definirPortSortieComposant(2, 0, 0);
+	
+XOR
+
+	Et et1 = new Et(1);
+	Et et2 = new Et(12);
+	Non non1 = new Non(3);
+	Non non2 = new Non(4);
+	Ou Ou1 = new Ou(5);
+	Repeteur rep1 = new Repeteur(6);
+	Repeteur rep2 = new Repeteur(7);
+	
+	Composite oux = new Composite("Oux",1, 2, 1,1);
+	
+	oux.ajouterComposant(et1);
+	oux.ajouterComposant(et2);
+	oux.ajouterComposant(non1);
+	oux.ajouterComposant(non2);
+	oux.ajouterComposant(Ou1);
+	oux.ajouterComposant(rep1);
+	oux.ajouterComposant(rep2);
+	
+	oux.cabler(6, 0, 3, 0);
+	oux.cabler(6, 0, 1, 0);
+	
+	oux.cabler(7, 0, 4, 0);
+	oux.cabler(7, 0, 2, 0);
+	
+	oux.cabler(3, 0, 1, 1);
+	oux.cabler(4, 0, 2, 1);
+	
+	oux.cabler(1, 0, 5, 1);
+	oux.cabler(2, 0, 5, 1);
+	
+	oux.definirPortEntreeComposant(6, 0, 0);
+	oux.definirPortEntreeComposant(7, 0, 1);
+	oux.definirPortSortieComposant(5, 0, 0);	
