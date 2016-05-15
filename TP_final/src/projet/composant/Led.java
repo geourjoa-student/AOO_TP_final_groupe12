@@ -1,6 +1,5 @@
 package projet.composant;
 import projet.port.PortEntree;
-import projet.port.PortSortie;
 
 public class Led extends Recepteur {
 	
@@ -13,7 +12,6 @@ public class Led extends Recepteur {
 	@Override
 	public void calculerSorties() {
 		allume = this.portsEntrees[0].isValeur();
-		this.portsSorties[0].setValeur(this.portsEntrees[0].isValeur());
 	}
 
 	public Led(int id) {

@@ -36,8 +36,7 @@ public class Circuit {
 		
 		if (!estComplet())
 			throw new Exception();
-		else
-			System.out.println("Test");
+		
 		// La première boucle permet aux portes de se stabiliser quelque soit
 		// l'ordre des execute
 		for (int i = 0; i < composants.size(); i++) {

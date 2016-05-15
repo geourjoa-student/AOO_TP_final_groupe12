@@ -142,8 +142,8 @@ public class LanceurDeBoole {
 		try {
 			monCircuit3.execute();
 		} catch (Exception e) {
-			
-			System.out.println("Le circuit n'est pas complet et ne peut être executé");
+			e.printStackTrace();
+			System.out.println("Le circuit n'est pas complet et ne peut être executé.");
 		}
 		
 		System.out.println(monCircuit3);

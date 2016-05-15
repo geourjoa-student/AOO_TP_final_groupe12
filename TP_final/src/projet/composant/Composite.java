@@ -49,11 +49,17 @@ public class Composite extends Circuit implements Composant{
 
 	@Override
 	public void calculerSorties() {
-		try {
+		/*try {
 			execute();
 		} catch (Exception e) {
 			//TODO Normalement cette exception est impossible
 			e.printStackTrace();
+		}*/
+		
+		for (int i = 0; i < composants.size(); i++) {
+			for (Composant c : composants.values()) {
+				c.calculerSorties();
+			}
 		}
 		
 	}
