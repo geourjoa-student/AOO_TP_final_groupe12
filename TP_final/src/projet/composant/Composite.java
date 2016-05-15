@@ -75,14 +75,36 @@ public class Composite extends Circuit implements Composant{
 	}
 
 	public boolean portsTousConnectes(){
-		//TODO a implementer
-		return true;
+		
+		for (int i = 0; i < portsEntrees.length; i++) {
+			if(portsEntrees[i]==null)
+				return false;	
+		}
+		
+		for (int i = 0; i < portsSorties.length; i++) {
+			if(portsSorties[i]==null)
+				return false;	
+		}
+		
+		return super.estComplet();
 	}
 	
 	@Override
 	public String toString() {
 
-		String s = "<" + id + "| " + nomCircuit + " (" + portsEntrees.length + "," + portsSorties.length + ")[\n";
+		String s = "<" + id + "| " + nomCircuit + " (" + portsEntrees.length + "," + portsSorties.length + ")["; 
+		
+		
+		for (int i = 0; i < portsEntrees.length; i++) {
+			 s+= "#" + i + "(" + portsEntrees[i].getProprietairePort().getId() + "#" + portsEntrees[i].getId_port() + ")";	
+			 
+			 if(i<portsEntrees.length-1){
+					s+= ",";
+			 }
+		}
+		
+		
+		s+= "\n";
 
 		
 		for (Composant c : composants.values()) {

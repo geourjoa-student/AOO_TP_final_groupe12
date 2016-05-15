@@ -7,31 +7,37 @@ import projet.composant.Composant;
 
 public class PortSortie extends Port {
 
-	private List<PortEntree> listePortsConnectes;
+	private List<PortEntree> portsConnectes;
 
 	public PortSortie(Composant proprietaire, int id) {
 		id_port = id;
-		listePortsConnectes = new ArrayList<PortEntree>();
+		portsConnectes = new ArrayList<PortEntree>();
 		this.proprietairePort = proprietaire;
 	}
 
 	public List<PortEntree> getListePortEntreeConnectes() {
-		return listePortsConnectes;
+		return portsConnectes;
 	}
 
 	public void ajouterConnexion(PortEntree p) {
-		listePortsConnectes.add(p);
+		portsConnectes.add(p);
+		p.connecte();
 
 	}
 
 	public void propagerValeur() {
 		
-		for (Iterator<PortEntree> it = listePortsConnectes.iterator(); it.hasNext();) {
+		for (Iterator<PortEntree> it = portsConnectes.iterator(); it.hasNext();) {
 			PortEntree portEntreeCourant = it.next();
 			portEntreeCourant.setValeur(valeur);
 			
 		}
 		
+	}
+
+	@Override
+	public boolean estConnecte() {
+		return (portsConnectes.size()>0);
 	}
 
 }

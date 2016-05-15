@@ -17,11 +17,12 @@ public class Led extends Recepteur {
 	}
 
 	public Led(int id) {
-		portsEntrees = new PortEntree[1];
-		portsSorties = new PortSortie[1];
+		
+		nbPortsEntree=1;
+		nbPortsSortie=0;
+		portsEntrees = new PortEntree[nbPortsEntree];
 		
 		portsEntrees[0] = new PortEntree(this,0);	
-		portsSorties[0] = new PortSortie(this,0);
 		
 		this.id = id;
 		
@@ -33,22 +34,8 @@ public class Led extends Recepteur {
 	@Override
 	public String toString() {
 	
-		String s = "<" + id + "| Led (" + portsEntrees.length + "," + portsSorties.length + "){"
-				+ ((allume) ? "allume" : "eteint") + "} -> ";
-
-		for (int i = 0; i < portsEntrees.length; i++) {
-			s += "#" + portsSorties[i].getId_port() + "(";
-			for (int j = 0; j < portsEntrees.length; j++) {
-				s += portsEntrees[i].getProprietairePort().getId() + "#" + portsEntrees[i].getId_port() ;
-				
-				if(j==portsEntrees.length){
-					s+= ",";
-				}
-			}
-			s+=")";
-		}
-
-		s += ">";
+		String s = "<" + id + "| Led (" + portsEntrees.length + "," + 0 + "){"
+				+ ((allume) ? "allume" : "eteint") + "} > ";
 
 		return s;
 	}

@@ -32,10 +32,12 @@ public class Circuit {
 	public void execute() throws Exception {
 		
 		//TODO	Ajouter système require
-		if(this instanceof Circuit)
-			if (!estComplet())
-				throw new Exception();
-
+		System.out.println(estComplet());
+		
+		if (!estComplet())
+			throw new Exception();
+		else
+			System.out.println("Test");
 		// La première boucle permet aux portes de se stabiliser quelque soit
 		// l'ordre des execute
 		for (int i = 0; i < composants.size(); i++) {
@@ -46,15 +48,15 @@ public class Circuit {
 
 	}
 	
-	private boolean estComplet(){
+	protected boolean estComplet(){
 		
-		boolean complet = true;
-		
+	
 		for (Composant c : composants.values()) {
-			complet &= c.portsTousConnectes();
+			if(!c.portsTousConnectes())
+				return false;
 		}
 		
-		return complet;
+		return true;
 	}
 
 	@Override

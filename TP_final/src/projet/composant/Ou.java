@@ -15,9 +15,11 @@ public class Ou extends Transformateur {
 	}
 	
 	public Ou (int id){
-	
-		portsEntrees = new PortEntree[2];
-		portsSorties = new PortSortie[1];
+		
+		nbPortsEntree=2;
+		nbPortsSortie=1;
+		portsEntrees = new PortEntree[nbPortsEntree];
+		portsSorties = new PortSortie[nbPortsSortie];
 		
 		portsEntrees[0] = new PortEntree(this, 0);
 		portsEntrees[1] = new PortEntree(this, 1);

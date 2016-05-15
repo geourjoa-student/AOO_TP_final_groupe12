@@ -10,8 +10,11 @@ import projet.port.PortSortie;
 public class Et extends Transformateur {
 
 	public Et(int id) {
-		portsEntrees = new PortEntree[2];
-		portsSorties = new PortSortie[1];
+		
+		nbPortsEntree=2;
+		nbPortsSortie=1;
+		portsEntrees = new PortEntree[nbPortsEntree];
+		portsSorties = new PortSortie[nbPortsSortie];
 
 		portsEntrees[0] = new PortEntree(this, 0);
 		portsEntrees[1] = new PortEntree(this, 1);
@@ -19,6 +22,8 @@ public class Et extends Transformateur {
 		portsSorties[0] = new PortSortie(this, 0);
 
 		this.id = id;
+	
+		
 	}
 
 	@Override

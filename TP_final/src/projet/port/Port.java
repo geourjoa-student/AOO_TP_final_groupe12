@@ -24,6 +24,8 @@ public abstract class Port {
 	public void setValeur(boolean valeur) {
 		this.valeur = valeur;
 	}
+	
+	public abstract boolean estConnecte();
 
 	
 	

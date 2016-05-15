@@ -17,7 +17,10 @@ public class Vcc extends Generateur {
 	}
 
 	public Vcc(int id) {
-		portsSorties = new PortSortie[1];
+		nbPortsEntree=0;
+		nbPortsSortie=1;
+
+		portsSorties = new PortSortie[nbPortsSortie];
 		
 		portsSorties[0] = new PortSortie(this,0);
 		

@@ -10,6 +10,10 @@ public abstract class Elementaire implements Composant {
 	protected PortEntree[] portsEntrees;
 
 	protected PortSortie[] portsSorties;
+	
+	protected int nbPortsSortie;
+	
+	protected int nbPortsEntree;
 
 	public int getId()
 	{
@@ -26,6 +30,16 @@ public abstract class Elementaire implements Composant {
 	}
 	
 	public boolean portsTousConnectes(){
+		for (int i = 0; i < nbPortsEntree; i++) {
+			if(!portsEntrees[i].estConnecte())
+				return false;		
+		}
+		
+		for (int i = 0; i < nbPortsSortie; i++) {
+			if(!portsSorties[i].estConnecte())
+				return false;		
+		}
+		
 		return true;
 	}
 }
