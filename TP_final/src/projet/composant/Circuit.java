@@ -67,8 +67,8 @@ public class Circuit {
 	}
 	
 	public void changerItr(int idItr) throws ComposantInconnuException, ActionInterditeException{
-		
-		if(composants.containsKey(idItr))
+		//TODO ajouter recherche dans les composites
+		if(!composants.containsKey(idItr))
 			throw new ComposantInconnuException();
 		
 		if(!(composants.get(idItr) instanceof Itr)){
@@ -79,11 +79,26 @@ public class Circuit {
 		
 	}
 	
-	public boolean observerLed(int idLed)throws ComposantInconnuException, ActionInterditeException{
-		if(composants.containsKey(idLed))
+	public boolean observerItr(int idItr) throws ComposantInconnuException, ActionInterditeException{
+		//TODO ajouter recherche dans les composites
+		if(!composants.containsKey(idItr))
 			throw new ComposantInconnuException();
 		
-		if(!(composants.get(idLed) instanceof Itr)){
+		if(!(composants.get(idItr) instanceof Itr)){
+			throw new ActionInterditeException();
+		}
+		
+		return ((Itr) composants.get(idItr)).getEtat();
+		
+	}
+	
+	public boolean observerLed(int idLed)throws ComposantInconnuException, ActionInterditeException{
+		
+		//TODO ajouter recherche dans les composites
+		if(!composants.containsKey(idLed))
+			throw new ComposantInconnuException();
+		
+		if(!(composants.get(idLed) instanceof Led)){
 			throw new ActionInterditeException();
 		}
 		
