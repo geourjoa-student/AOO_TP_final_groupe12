@@ -2,6 +2,7 @@ package projet.composant;
 import java.util.HashMap;
 import java.util.Map;
 
+import projet.exception.ActionInterditeException;
 import projet.exception.CircuitNonCompletException;
 import projet.exception.ComposantInconnuException;
 import projet.exception.PortInconnuException;
@@ -63,6 +64,30 @@ public class Circuit {
 		}
 		
 		return true;
+	}
+	
+	public void changerItr(int idItr) throws ComposantInconnuException, ActionInterditeException{
+		
+		if(composants.containsKey(idItr))
+			throw new ComposantInconnuException();
+		
+		if(!(composants.get(idItr) instanceof Itr)){
+			throw new ActionInterditeException();
+		}
+		
+		((Itr) composants.get(idItr)).changerEtat();
+		
+	}
+	
+	public boolean observerLed(int idLed)throws ComposantInconnuException, ActionInterditeException{
+		if(composants.containsKey(idLed))
+			throw new ComposantInconnuException();
+		
+		if(!(composants.get(idLed) instanceof Itr)){
+			throw new ActionInterditeException();
+		}
+		
+		return ((Led) composants.get(idLed)).estAllume();
 	}
 
 	@Override
