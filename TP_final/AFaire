@@ -5,7 +5,7 @@ Listes des taches : 13/04
 --------------------------------------
 	-Améliorer le toString des composites et des élémentaires (généraliser)
 	
-	-Écrire les instructions permettant de créer : xor, nor, nand
+	-Écrire les instructions permettant de créer : xor, nor, nand x
 	
 	-Ajouter des sécurités aux accesseurs
 	

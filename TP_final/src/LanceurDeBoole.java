@@ -1,4 +1,7 @@
 import projet.composant.*;
+import projet.exception.CircuitNonCompletException;
+import projet.exception.ComposantInconnuException;
+import projet.exception.PortInconnuException;
 
 public class LanceurDeBoole {
 
@@ -117,31 +120,45 @@ public class LanceurDeBoole {
 		oux.ajouterComposant(rep1);
 		oux.ajouterComposant(rep2);
 		
-		oux.cabler(18, 0, 13, 0);
-		oux.cabler(18, 0, 16, 0);
+		//Ce n'est qu'un main de test
 		
-		oux.cabler(19, 0, 14, 0);
-		oux.cabler(19, 0, 15, 0);
+		try {
+			oux.cabler(18, 0, 13, 0);
+			oux.cabler(18, 0, 16, 0);
+			
+			oux.cabler(19, 0, 14, 0);
+			oux.cabler(19, 0, 15, 0);
+			
+			oux.cabler(13, 0, 17, 0);
+			oux.cabler(14, 0, 17, 1);
+			
+			oux.cabler(15, 0, 13, 1);
+			oux.cabler(16, 0, 14, 1);
+			
+			oux.definirPortEntreeComposant(18, 0, 0);
+			oux.definirPortEntreeComposant(19, 0, 1);
+			oux.definirPortSortieComposant(17, 0, 0);
+		} catch (ComposantInconnuException | PortInconnuException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		oux.cabler(13, 0, 17, 0);
-		oux.cabler(14, 0, 17, 1);
-		
-		oux.cabler(15, 0, 13, 1);
-		oux.cabler(16, 0, 14, 1);
-		
-		oux.definirPortEntreeComposant(18, 0, 0);
-		oux.definirPortEntreeComposant(19, 0, 1);
-		oux.definirPortSortieComposant(17, 0, 0);
 		
 		monCircuit3.ajouterComposant(oux);
 		
-		monCircuit3.cabler(12, 0, 20, 0);
-		monCircuit3.cabler(12, 0, 20, 1);
-		monCircuit3.cabler(20, 0, 21, 0);
+		try {
+			monCircuit3.cabler(12, 0, 20, 0);
+			monCircuit3.cabler(12, 0, 20, 1);
+			monCircuit3.cabler(20, 0, 21, 0);
+		} catch (ComposantInconnuException | PortInconnuException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		
 		try {
 			monCircuit3.execute();
-		} catch (Exception e) {
+		} catch (CircuitNonCompletException e) {
 			e.printStackTrace();
 			System.out.println("Le circuit n'est pas complet et ne peut être executé.");
 		}

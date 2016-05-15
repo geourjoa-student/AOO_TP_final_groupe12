@@ -1,5 +1,6 @@
 package projet.composant;
 
+import projet.exception.PortInconnuException;
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
@@ -20,12 +21,16 @@ public abstract class Elementaire implements Composant {
 		return id;
 	}
 
-	public PortSortie getNiemePortSortie(int n) {
+	public PortSortie getNiemePortSortie(int n) throws PortInconnuException{
+		if(n>=nbPortsSortie)
+			throw new PortInconnuException();
 		return portsSorties[n];
 	}
 
 	@Override
-	public PortEntree getNiemePortEntree(int n) {
+	public PortEntree getNiemePortEntree(int n) throws PortInconnuException{
+		if(n>=nbPortsEntree)
+			throw new PortInconnuException();
 		return portsEntrees[n];
 	}
 	

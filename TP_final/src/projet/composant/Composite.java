@@ -3,6 +3,7 @@ package projet.composant;
 import java.util.Iterator;
 
 import projet.composant.Circuit;
+import projet.exception.PortInconnuException;
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
@@ -32,12 +33,12 @@ public class Composite extends Circuit implements Composant{
 		}
 	}
 
-	public void definirPortEntreeComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) {
+	public void definirPortEntreeComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
 		//TODO verif
 		portsEntrees[numeroPortComposite]=composants.get(idComposant).getNiemePortEntree(numeroPortComposant);
 	}
 
-	public void definirPortSortieComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) {
+	public void definirPortSortieComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
 		//TODO verif
 		portsSorties[numeroPortComposite]=composants.get(idComposant).getNiemePortSortie(numeroPortComposant);
 	}
@@ -49,30 +50,29 @@ public class Composite extends Circuit implements Composant{
 
 	@Override
 	public void calculerSorties() {
-		/*try {
+		try {
 			execute();
 		} catch (Exception e) {
 			//TODO Normalement cette exception est impossible
 			e.printStackTrace();
-		}*/
-		
-		for (int i = 0; i < composants.size(); i++) {
-			for (Composant c : composants.values()) {
-				c.calculerSorties();
-			}
 		}
+		
+	
 		
 	}
 
 	@Override
-	public PortSortie getNiemePortSortie(int n) {
-		//TODO verif
+	public PortSortie getNiemePortSortie(int n) throws PortInconnuException {
+		if(n>=portsSorties.length)
+			throw new PortInconnuException();
 		return portsSorties[n];
 	}
 
 	@Override
-	public PortEntree getNiemePortEntree(int n) {
-		//TODO verif
+	public PortEntree getNiemePortEntree(int n) throws PortInconnuException {
+		
+		if(n>=portsEntrees.length)
+			throw new PortInconnuException();
 		return portsEntrees[n];
 	}
 

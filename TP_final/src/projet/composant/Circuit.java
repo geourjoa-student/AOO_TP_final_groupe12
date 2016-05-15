@@ -2,6 +2,10 @@ package projet.composant;
 import java.util.HashMap;
 import java.util.Map;
 
+import projet.exception.CircuitNonCompletException;
+import projet.exception.ComposantInconnuException;
+import projet.exception.PortInconnuException;
+
 public class Circuit {
 	
 	protected String nomCircuit;
@@ -20,7 +24,11 @@ public class Circuit {
 	}
 
 	public void cabler(int idComposantPortSortie, int numeroPortSortie, int idComposantPortEntree,
-			int numeroPortEntre) {
+			int numeroPortEntre) throws ComposantInconnuException, PortInconnuException {
+		
+		if(!composants.containsKey(idComposantPortEntree)||!composants.containsKey(idComposantPortSortie)){
+			throw new ComposantInconnuException();
+		}
 
 		Composant cs = (Composant) composants.get(idComposantPortSortie);
 		Composant ce = (Composant) composants.get(idComposantPortEntree);
@@ -29,13 +37,12 @@ public class Circuit {
 
 	}
 
-	public void execute() throws Exception {
+	public void execute() throws CircuitNonCompletException {
 		
 		//TODO	Ajouter système require
-		System.out.println(estComplet());
 		
 		if (!estComplet())
-			throw new Exception();
+			throw new CircuitNonCompletException();
 		
 		// La première boucle permet aux portes de se stabiliser quelque soit
 		// l'ordre des execute
