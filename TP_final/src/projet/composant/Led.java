@@ -3,7 +3,7 @@ import projet.port.PortEntree;
 
 public class Led extends Recepteur {
 	
-	public Boolean allume;
+	private Boolean allume;
 
 	public Boolean estAllume() {
 		return allume;
