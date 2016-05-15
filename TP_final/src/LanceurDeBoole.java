@@ -2,6 +2,7 @@ import projet.composant.*;
 import projet.exception.CircuitNonCompletException;
 import projet.exception.ComposantInconnuException;
 import projet.exception.PortInconnuException;
+import projet.test.TestOux;
 
 public class LanceurDeBoole {
 
@@ -93,7 +94,7 @@ public class LanceurDeBoole {
 		
 		*/
 		
-		Circuit monCircuit3 = new Circuit("Test Oux Composite");
+		/*Circuit monCircuit3 = new Circuit("Test Oux Composite");
 		
 		
 		Itr it1 = new Itr(12);
@@ -126,8 +127,14 @@ public class LanceurDeBoole {
 			System.out.println("Le circuit n'est pas complet et ne peut être executé.");
 		}
 		
-		System.out.println(monCircuit3);
+		System.out.println(monCircuit3);*/
+		
+		TestOux testOux = new TestOux();
+		
+		testOux.tester();
 		
 	}
+		
+		
 
 }
