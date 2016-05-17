@@ -8,6 +8,11 @@ public class LanceurDeBoole {
 
 	public static void main(String[] args) {
 		
+		
+		Circuit circuitTest4b = new Circuit("Test 4 b");
+		
+		
+		
 			
 		/* Circuit 1
 		 * 
