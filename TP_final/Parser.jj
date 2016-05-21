@@ -1,0 +1,43 @@
+options{STATIC=false;}
+PARSER_BEGIN(Reader)
+package jus.aoo.boole.reader;
+import jus.aoo.boole.circuit.*;
+
+public class Reader extends ReaderUtilities
+{
+	public _Circuit read() throws Exception {return TOUT();}
+}
+PARSER_END(Reader)
+SKIP :{" " |"\r" | "\t" | "\n"}
+TOKEN :{
+  <NUM: ( <DIGIT> )+ >
+| <ID: <LETTER> (<DIGIT> | <LETTER>)+>
+| <#LETTER: ["a"-"z","A"-"Z"] >
+| <#DIGIT: ["0" - "9"] >
+| < IDCONNEXION: "#" + <NUM> >
+| < LCROCHET: "[" >
+| < RCROCHET: "]" >
+| < BREAKTOKEN: ";" >
+| < LCHEVRON: "<" >
+| < RCHEVRON: ">" >
+| < ORTOKEN: "|" 
+| < UNIONTOKEN: "-" >
+| < LPAR: "(" >
+| < RPAR: ")" >
+| < COMA: "," >
+| < ENTREETOKEN: "#E" >
+| < SORTIETOKEN: "#S" > 
+| < NOM: (#LETTER)+ >
+| < STRINGCIRCUIT: "circuit" >
+| < STRINGCOMPOSITE: "composite" >
+}
+
+void TOUT(): {} { (COMPOSITE())+ CIRCUIT() <EOF> }
+void CIRCUIT(): {} { <STRINGCIRCUIT> <NOM> (COMPOSANT())+  }
+void COMPOSITE(): {} { <STRINGCOMPOSITE> <NOM> <LPAR> <NUM> <COMA> <NUM> <RPAR> (COMPOSANT())+ LISTES() }
+void COMPOSANT(): {} { <LCHEVRON> <NUM> <ORTOKEN> <NOM> LISTCONNEXIONS() <RCHEVRON> }
+void LISTES(): {} { <LCROCHET> (ENTREE() |() SORTIE() | <BREAKTOKEN>)+ <RCROCHET> }
+void ENTREE(): {} { <ENTREETOKEN> <NUM> CONNEXIONS()}
+void SORTIE(): {} { <SORTIETOKEN> <NUM> CONNEXIONS()}
+void LISTCONNEXIONS(): {} { <UNIONTOKEN>  <RCHEVRON>  <IDCONNEXION> <LPAR> ((<NUM> <IDCONNEXION>)* <COMA>)+  <RPAR> }
+void CONNEXIONS(): {} { <LPAR>  ((<NUM> <IDCONNEXION>)* <COMA>)+ <RPAR> }
