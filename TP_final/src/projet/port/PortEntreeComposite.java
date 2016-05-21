@@ -30,4 +30,10 @@ public class PortEntreeComposite extends PortEntree{
 		}
 	}
 
+	public List<PortEntree> getPortsEntreeComposantsInternesConnectes() {
+		return portsEntreeComposantsInternesConnectes;
+	}
+	
+	
+
 }
