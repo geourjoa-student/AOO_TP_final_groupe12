@@ -1,8 +1,9 @@
 import projet.composant.*;
+import projet.exception.ActionInterditeException;
 import projet.exception.CircuitNonCompletException;
 import projet.exception.ComposantInconnuException;
 import projet.exception.PortInconnuException;
-import projet.test.TestOux;
+
 
 public class LanceurDeBoole {
 
@@ -25,74 +26,107 @@ public class LanceurDeBoole {
 		
 		Circuit monCircuit = new Circuit("monCircuit");
 		
-		Composite oux = new Composite("Oux", 0, 2, 1, 1);
+		Itr A = new Itr(8);
+		Itr B = new Itr(9);
+		Itr Ce = new Itr(10);
 		
+		Led S = new Led(11);
+		Led Cs = new Led(12);
 		
+		/* 
+		 * Construction d'un Add1B en composite
+		 * 
+		 * Ports entrees 
+		 * 
+		 * 0 A
+		 * 1 B
+		 * 2 Ce
+		 * 
+		 * Ports sorties
+		 * 
+		 * 0 S
+		 * 1 Cs
+		 */
+		Composite add1b = new Composite("Add1B", 0, 3, 2, 1);
 		
-		Et et1 = new Et(1);
-		Et et2 = new Et(2);
+		Oux oux1 = new Oux(1);
+		Oux oux2 = new Oux(2);
 		
-		Ou ou1 = new Ou(3);
+		Et et1 = new Et(3);
+		Et et2 = new Et(4);
+		Et et3 = new Et(5);
 		
-		Non non1 = new Non(4);
-		Non non2 = new Non(5);
-			
-		Vcc vcc= new Vcc(6);
-		Gnd gnd = new Gnd(7);
+		Ou ou1 = new Ou(6);
+		Ou ou2 = new Ou(7);
 		
-		Led led = new Led(8);
-				
-		oux.ajouterComposant(et1);
-		oux.ajouterComposant(et2);
-		oux.ajouterComposant(ou1);
-		oux.ajouterComposant(non1);
-		oux.ajouterComposant(non2);
+		add1b.ajouterComposant(oux1);
+		add1b.ajouterComposant(oux2);
+		add1b.ajouterComposant(ou1);
+		add1b.ajouterComposant(ou2);
+		add1b.ajouterComposant(et1);
+		add1b.ajouterComposant(et2);
+		add1b.ajouterComposant(et3);
 		
 		try {
-			oux.cabler(1, 0, 3, 0);
-			oux.cabler(2, 0, 3, 1);
-			oux.cabler(4, 0, 1, 1);
-			oux.cabler(5, 0, 2, 0);
+			add1b.cabler(1, 0, 2, 0);
+			add1b.cabler(6, 0, 7, 0);
+			add1b.cabler(3, 0, 6, 0);
+			add1b.cabler(4, 0, 6, 1);
+			add1b.cabler(5, 0, 7, 1);
 			
-			oux.définirPortSortieComposant(3, 0, 0);
+			add1b.définirPortSortieComposant(2, 0, 0);
+			add1b.définirPortSortieComposant(7, 0, 1);
 			
-			oux.connecterPortEntreeComposant(1, 0, 0);
-			oux.connecterPortEntreeComposant(2, 1, 1);
-			oux.connecterPortEntreeComposant(4, 0, 1);
-			oux.connecterPortEntreeComposant(5, 0, 0);
-		} catch (ComposantInconnuException | PortInconnuException e2) {
+			add1b.connecterPortEntreeComposant(1, 0, 0);
+			add1b.connecterPortEntreeComposant(3, 0, 0);
+			add1b.connecterPortEntreeComposant(4, 0, 0);
+			
+			add1b.connecterPortEntreeComposant(1, 1, 1);
+			add1b.connecterPortEntreeComposant(3, 1, 1);
+			add1b.connecterPortEntreeComposant(5, 0, 1);
+			
+			add1b.connecterPortEntreeComposant(2, 1, 2);
+			add1b.connecterPortEntreeComposant(4, 1, 2);
+			add1b.connecterPortEntreeComposant(5, 1, 2);
+		} catch (ComposantInconnuException | PortInconnuException e) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			e.printStackTrace();
 		}
 		
-		
-		monCircuit.ajouterComposant(led);
-		
-		monCircuit.ajouterComposant(vcc);
-		monCircuit.ajouterComposant(gnd);
-		
-		monCircuit.ajouterComposant(oux);
-		
-		
-		try {
-			monCircuit.cabler(6,0,0,0);
-			monCircuit.cabler(7,0,0,1);
+		monCircuit.ajouterComposant(add1b);
+		monCircuit.ajouterComposant(A);
+		monCircuit.ajouterComposant(B);
+		monCircuit.ajouterComposant(S);
+		monCircuit.ajouterComposant(Ce);
+		monCircuit.ajouterComposant(Cs);
 			
-			monCircuit.cabler(0,0,8,0);
-		} catch (ComposantInconnuException | PortInconnuException e1) {
+		try {
+			monCircuit.cabler(8, 0, 0, 0);
+			monCircuit.cabler(9, 0, 0, 1);
+			monCircuit.cabler(10, 0, 0, 2);
+			
+			monCircuit.cabler(0, 0, 11, 0);
+			monCircuit.cabler(0, 1, 12, 0);
+		} catch (ComposantInconnuException | PortInconnuException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
-			
 		
 		try {
+			monCircuit.changerItr(8);
+			monCircuit.changerItr(9);
+			monCircuit.changerItr(10);
+			
 			monCircuit.execute();
-		} catch (Exception e) {
-			
-			System.out.println("Le circuit n'est pas complet");
+			System.out.println(monCircuit);
+		} catch (CircuitNonCompletException | ComposantInconnuException | ActionInterditeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		System.out.println(monCircuit.toString());
+		
+		
+	
 		
 		
 		
