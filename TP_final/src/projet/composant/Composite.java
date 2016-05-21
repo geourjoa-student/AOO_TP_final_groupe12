@@ -5,6 +5,7 @@ import java.util.Iterator;
 import projet.composant.Circuit;
 import projet.exception.PortInconnuException;
 import projet.port.PortEntree;
+import projet.port.PortEntreeComposite;
 import projet.port.PortSortie;
 
 public class Composite extends Circuit implements Composant{
@@ -13,14 +14,14 @@ public class Composite extends Circuit implements Composant{
 	
 	private int profondeur;
 
-	public PortEntree[] portsEntrees;
+	private PortEntreeComposite[] portsEntrees;
 
-	public PortSortie[] portsSorties;
+	private PortSortie[] portsSorties;
 
 	public Composite(String nomComposant, int id, int nbPortsEntree, int nbPortsSortie, int profondeur) {
 		super(nomComposant);
 
-		portsEntrees = new PortEntree[nbPortsEntree];
+		portsEntrees = new PortEntreeComposite[nbPortsEntree];
 		portsSorties = new PortSortie[nbPortsSortie];
 		
 		this.profondeur=profondeur;
@@ -28,17 +29,20 @@ public class Composite extends Circuit implements Composant{
 		this.id = id;
 		
 		for (int i = 0; i < portsEntrees.length; i++) {
-			portsEntrees[i]=new PortEntree(this, i);
+			portsEntrees[i]=new PortEntreeComposite(this, i);
 			
 		}
 	}
 
-	public void definirPortEntreeComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
-		//TODO verif
-		portsEntrees[numeroPortComposite]=composants.get(idComposant).getNiemePortEntree(numeroPortComposant);
+	public void connecterPortEntreeComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
+		
+		portsEntrees[numeroPortComposite].ajouterPortEntreeComposantInterne(composants.get(idComposant).getNiemePortEntree(numeroPortComposant));
+		composants.get(idComposant).getNiemePortEntree(numeroPortComposant).connecte();
+		
+		portsEntrees[numeroPortComposite].connecte();
 	}
 
-	public void definirPortSortieComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
+	public void définirPortSortieComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
 		//TODO verif
 		portsSorties[numeroPortComposite]=composants.get(idComposant).getNiemePortSortie(numeroPortComposant);
 	}
@@ -50,6 +54,11 @@ public class Composite extends Circuit implements Composant{
 
 	@Override
 	public void calculerSorties() {
+		
+		
+		
+		
+		
 		try {
 			execute();
 		} catch (Exception e) {
@@ -83,7 +92,7 @@ public class Composite extends Circuit implements Composant{
 	public boolean portsTousConnectes(){
 		
 		for (int i = 0; i < portsEntrees.length; i++) {
-			if(portsEntrees[i]==null)
+			if(!portsEntrees[i].estConnecte())
 				return false;	
 		}
 		
@@ -92,7 +101,7 @@ public class Composite extends Circuit implements Composant{
 				return false;	
 		}
 		
-		return super.estComplet();
+		return estComplet();
 	}
 	
 	@Override
@@ -102,7 +111,20 @@ public class Composite extends Circuit implements Composant{
 		
 		
 		for (int i = 0; i < portsEntrees.length; i++) {
-			 s+= "#" + i + "(" + portsEntrees[i].getProprietairePort().getId() + "#" + portsEntrees[i].getId_port() + ")";	
+			 s+= "#" + i+ "(";
+			 
+			 for (Iterator<PortEntree> iterator = portsEntrees[i].getPortsEntreeComposantsInternesConnectes().iterator(); iterator.hasNext();) {
+				PortEntree pe = (PortEntree) iterator.next();
+				
+				s+=pe.getProprietairePort().getId() + "#" + pe.getId_port() ;
+				
+				if(iterator.hasNext()){
+					s+= ",";
+				}
+				
+			}
+			 
+			 s+=")";	
 			 
 			 if(i<portsEntrees.length-1){
 					s+= ",";
