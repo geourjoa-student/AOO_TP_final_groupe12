@@ -37,7 +37,7 @@ circuit TOUTTOUT(): {Circuit circuit;}
   circuit=TOUT() <EOF>
   {return circuit;}
 }
-circuit TOUT(): {int id;Circuit circuit;Composite composite}
+circuit TOUT(): {int id;Circuit circuit;Composite composite;}
 {
   {id = 1;}
   (composite=COMPOSITE(id)
@@ -54,7 +54,7 @@ circuit CIRCUIT(): {Circuit circuit;Composant composant;string nom;}
   (composant=COMPOSANT())+
   {return circuit}
 }
-composite COMPOSITE(int id): {Composite composite;Composant composant;string nom,Token e1,e2;int i1,i2}
+composite COMPOSITE(int id): {Composite composite;Composant composant;string nom,Token e1,e2;int i1,i2;}
 {
   <STRINGCOMPOSITE> nom=<NOM> <LPAR> e1=<NUM> <COMA> e2=<NUM> <RPAR>
   {
@@ -67,7 +67,7 @@ composite COMPOSITE(int id): {Composite composite;Composant composant;string nom
   {return composite;}
 }
 
-composite LISTES(): {Composite composite}
+composite LISTES(): {Composite composite;}
 {
   <LCROCHET> (composite=ENTREE() | composite=SORTIE() | <BREAKTOKEN>)+ <RCROCHET>
   {return composite;}
@@ -82,7 +82,7 @@ composite ENTREE(): {Composite composite;Token e1,e2;int i1,i2,i3}
   )+ <RPAR>
   {return composite}
 }
-composite SORTIE(): {Composite composite;Token e1,e2;int i1,i2,i3}
+composite SORTIE(): {Composite composite;Token e1,e2;int i1,i2,i3;}
 {
   <SORTIETOKEN> e1=<NUM> <LPAR>  ((e2=<NUM> i3=<IDCONNEXION>
   {i1=Integer.parseInt(e1.image);
@@ -96,12 +96,12 @@ composant COMPOSANT(): {string nom;composant composant;Token e1;int i1;}
 { <LCHEVRON> e1=<NUM> <ORTOKEN> nom=<NOM>
   {Class myClass = Class.forName(nom);
    i1=Integer.parseInt(e1.image);
-   Composant composant = myClass.newInstance(i1); // Ca marche?? i1 est l'ID
+   myClass composant = myClass.newInstance(i1); // Ca marche?? i1 est l'ID
   }
    composant=LISTCONNEXIONS(id) <RCHEVRON>
    {return composant}
 }
-composant LISTCONNEXIONS(int id): {Composant composant;Token e1,e2;int i1,i2,i3}
+composant LISTCONNEXIONS(int id): {Composant composant;Token e1,e2;int i1,i2,i3;}
 {
   <UNIONTOKEN>  <RCHEVRON>  i3=<IDCONNEXION> <LPAR> ((e1=<NUM> i2=<IDCONNEXION>
   {i1=Integer.parseInt(e1.image);
@@ -109,7 +109,7 @@ composant LISTCONNEXIONS(int id): {Composant composant;Token e1,e2;int i1,i2,i3}
   )* <COMA>)+  <RPAR>
   {return composant;}
 }
-int IDCONNEXION(): {Token e1}
+int IDCONNEXION(): {Token e1;}
 {
   <DIEZETOKEN> e1=<NUM> 
   {return Integer.parseInt(e1.image);}
