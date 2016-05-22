@@ -1,6 +1,5 @@
 package projet.composant;
 
-import projet.exception.ValeurIncorrecteException;
 import projet.port.PortSortie;
 
 public class Gen4bc2 extends Generateur {
@@ -15,8 +14,11 @@ public class Gen4bc2 extends Generateur {
 		
 		for (int i = 0; i < nbPortsSortie; i++) {
 			portsSorties[i] = new PortSortie(this,i);
-			portsSorties[i].setValeur(false);		
+			portsSorties[i].setValeur(false);	
+			
 		}
+		
+		this.valeur=0;
 		
 		
 		this.id=id;
@@ -43,9 +45,9 @@ public class Gen4bc2 extends Generateur {
 		return valeur;
 	}
 
-	public void setValeur(int valeur) throws ValeurIncorrecteException {
-		if (valeur > 7 | valeur < -8) throw new ValeurIncorrecteException();
-		this.valeur = valeur;
+	public void setValeur(int valeur)  {
+		if (valeur <= 7 && valeur >= -8) 
+			this.valeur = valeur;
 	}
 	
 
