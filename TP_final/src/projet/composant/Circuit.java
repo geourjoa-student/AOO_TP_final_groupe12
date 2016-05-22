@@ -19,7 +19,11 @@ public class Circuit {
 		this.composants = new HashMap<Integer, Composant>();
 		
 	}
-
+	
+	public String getNom(){
+		return nomCircuit;
+	}
+	
 	public void ajouterComposant(Composant c) {
 		composants.put(c.getId(), c);
 	}

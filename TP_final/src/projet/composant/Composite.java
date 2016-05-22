@@ -70,8 +70,12 @@ public class Composite extends Circuit implements Composant{
 		
 	}
 	
-	public int getLength(){
+	public int getLengthSorties(){
 		return portsSorties.length;
+	}
+	
+	public int getLengthEntrees(){
+		return portsEntrees.length;
 	}
 	
 	@Override
