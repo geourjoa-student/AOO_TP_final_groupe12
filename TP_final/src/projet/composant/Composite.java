@@ -69,7 +69,11 @@ public class Composite extends Circuit implements Composant{
 	
 		
 	}
-
+	
+	public int getLength(){
+		return portsSorties.length;
+	}
+	
 	@Override
 	public PortSortie getNiemePortSortie(int n) throws PortInconnuException {
 		if(n>=portsSorties.length)

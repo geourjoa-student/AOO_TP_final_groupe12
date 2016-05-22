@@ -45,7 +45,7 @@ public class Circuit {
 		if (!estComplet())
 			throw new CircuitNonCompletException();
 		
-		// La première boucle permet aux portes de se stabiliser quelque soit
+		// La première boucle permet aux portes de se stabiliser quel que soit
 		// l'ordre des execute
 		for (int i = 0; i < composants.size(); i++) {
 			for (Composant c : composants.values()) {

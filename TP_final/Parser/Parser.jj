@@ -1,0 +1,117 @@
+options{STATIC=false;}
+PARSER_BEGIN(Reader)
+package jus.aoo.boole.reader;
+import jus.aoo.boole.circuit.*;
+
+public class Reader extends ReaderUtilities
+{
+	public _Circuit read() throws Exception {return TOUT();}
+}
+PARSER_END(Reader)
+SKIP :{" " |"\r" | "\t" | "\n"}
+TOKEN :{
+  <NUM: ( <DIGIT> )+ >
+| <LETTER: ["a"-"z","A"-"Z"] >
+| <DIGIT: ["0" - "9"] >
+| < LCROCHET: "[" >
+| < RCROCHET: "]" >
+| < BREAKTOKEN: ";" >
+| < LCHEVRON: "<" >
+| < RCHEVRON: ">" >
+| < ORTOKEN: "|" >
+}
+TOKEN :{
+  < UNIONTOKEN: "-" >
+| < LPAR: "(" >
+| < RPAR: ")" >
+| < COMA: "," >
+| < ENTREETOKEN: "#E" >
+| < SORTIETOKEN: "#S" > 
+| < STRINGCIRCUIT: "circuit" >
+| < STRINGCOMPOSITE: "composite" >
+| < DIEZETOKEN: "#" >
+| < NOM: (<LETTER>)+ >
+}
+
+circuit TOUTTOUT(): {Circuit circuit;}
+{
+  circuit=TOUT() <EOF>
+  {return circuit;}
+}
+circuit TOUT(): {int id;Circuit circuit;Composite composite;}
+{
+  {id = 1;}
+  (composite=COMPOSITE(id)
+  {id++;
+  circuit.ajouterComposant(composite);})+
+  circuit=CIRCUIT()
+  {return circuit;}
+}
+
+circuit CIRCUIT(): {Circuit circuit;Composant composant;string nom;}
+{
+  <STRINGCIRCUIT> nom=<NOM>
+  {Circuit circuit = new Circuit(nom);}
+  (composant=COMPOSANT())+
+  {return circuit;}
+}
+composite COMPOSITE(int id): {Composite composite;Composant composant;string nom;Token e1,e2;int i1,i2;}
+{
+  <STRINGCOMPOSITE> nom=<NOM> <LPAR> e1=<NUM> <COMA> e2=<NUM> <RPAR>
+  {
+	i1= Integer.parseInt(e1.image);
+	i2= Integer.parseInt(n.image);
+    Composite composite = new Composite(nom,id,i1, i2, 1); }
+  (compostant=COMPOSANT()
+  {composite.ajouterComposant(composant);})+
+  composite=LISTES()
+  {return composite;}
+}
+
+composite LISTES(): {Composite composite;}
+{
+  <LCROCHET> (composite=ENTREE() | composite=SORTIE() | <BREAKTOKEN>)+ <RCROCHET>
+  {return composite;}
+}
+composite ENTREE(): {Composite composite;Token e1,e2;int i1,i2,i3;}
+{
+  <ENTREETOKEN> e1=<NUM> <LPAR>  ((e2=<NUM> i3=IDCONNEXION()
+  {i1=Integer.parseInt(e1.image);
+   i2=Integer.parseInt(e2.image);
+   composite.definirPortEntreeComposant(i2,i3,i1);}
+  )* <COMA>
+  )+ <RPAR>
+  {return composite;}
+}
+composite SORTIE(): {Composite composite;Token e1,e2;int i1,i2,i3;}
+{
+  <SORTIETOKEN> e1=<NUM> <LPAR>  ((e2=<NUM> i3=IDCONNEXION()
+  {i1=Integer.parseInt(e1.image);
+  i2=Integer.parseInt(e2.image);
+  composite.definirPortSortieComposant(i2,i3,i1);}
+  )* <COMA>
+  )+ <RPAR>
+  {return composite;}
+}
+composant COMPOSANT(): {string nom;composant composant;Token e1;int i1;}
+{ <LCHEVRON> e1=<NUM> <ORTOKEN> nom=<NOM>
+  {Class myClass = Class.forName(nom);
+   i1=Integer.parseInt(e1.image);
+   myClass composant = myClass.newInstance(i1); // Ca marche?? i1 est l'ID
+  }
+   composant=LISTCONNEXIONS(id) <RCHEVRON>
+   {return composant;}
+}
+composant LISTCONNEXIONS(int id): {Composant composant;Token e1,e2;int i1,i2,i3;}
+{
+  <UNIONTOKEN>  <RCHEVRON>  i3=IDCONNEXION() <LPAR> ((e1=<NUM> i2=IDCONNEXION()
+  {i1=Integer.parseInt(e1.image);
+  composant.cabler(id,i3,i1,i2);}
+  )* <COMA>)+  <RPAR>
+  {return composant;}
+}
+int IDCONNEXION(): {Token e1;}
+{
+  <DIEZETOKEN> e1=<NUM> 
+  {return Integer.parseInt(e1.image);}
+}
