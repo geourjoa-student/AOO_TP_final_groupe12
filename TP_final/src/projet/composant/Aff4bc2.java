@@ -8,10 +8,10 @@ public class Aff4bc2 extends Recepteur {
 	private int valeur;
 	
 	public Aff4bc2(int id) {
-		nbPortsEntree=1;
+		nbPortsEntree=4;
 		nbPortsSortie=0;
 		
-		portsEntrees= new PortEntree[nbPortsSortie];
+		portsEntrees= new PortEntree[nbPortsEntree];
 		
 		for (int i = 0; i < nbPortsEntree; i++) {
 			portsEntrees[i] = new PortEntree(this,i);
@@ -30,7 +30,7 @@ public class Aff4bc2 extends Recepteur {
 			valeurTemporaire+=2;
 		if(portsEntrees[2].isValeur())
 			valeurTemporaire+=4;
-		if(portsEntrees[1].isValeur())
+		if(portsEntrees[3].isValeur())
 			valeurTemporaire=~valeurTemporaire;
 			valeurTemporaire++;
 			

@@ -26,103 +26,213 @@ public class LanceurDeBoole {
 		
 		Circuit monCircuit = new Circuit("monCircuit");
 		
-		Itr A = new Itr(8);
-		Itr B = new Itr(9);
-		Itr Ce = new Itr(10);
+		Composite add1b0 = new Composite("Add1B0", 6, 3, 2, 1);
 		
-		Led S = new Led(11);
-		Led Cs = new Led(12);
-		
-		/* 
-		 * Construction d'un Add1B en composite
-		 * 
-		 * Ports entrees 
-		 * 
-		 * 0 A
-		 * 1 B
-		 * 2 Ce
-		 * 
-		 * Ports sorties
-		 * 
-		 * 0 S
-		 * 1 Cs
-		 */
-		Composite add1b = new Composite("Add1B", 0, 3, 2, 1);
-		
-		Oux oux1 = new Oux(1);
-		Oux oux2 = new Oux(2);
-		
-		Et et1 = new Et(3);
-		Et et2 = new Et(4);
-		Et et3 = new Et(5);
-		
-		Ou ou1 = new Ou(6);
-		Ou ou2 = new Ou(7);
-		
-		add1b.ajouterComposant(oux1);
-		add1b.ajouterComposant(oux2);
-		add1b.ajouterComposant(ou1);
-		add1b.ajouterComposant(ou2);
-		add1b.ajouterComposant(et1);
-		add1b.ajouterComposant(et2);
-		add1b.ajouterComposant(et3);
+		add1b0.ajouterComposant(new Oux(1));
+		add1b0.ajouterComposant(new Oux(2));
+		add1b0.ajouterComposant(new Et(3));
+		add1b0.ajouterComposant(new Et(4));
+		add1b0.ajouterComposant(new Et(5));
+		add1b0.ajouterComposant(new Ou(6));
+		add1b0.ajouterComposant(new Ou(7));
 		
 		try {
-			add1b.cabler(1, 0, 2, 0);
-			add1b.cabler(6, 0, 7, 0);
-			add1b.cabler(3, 0, 6, 0);
-			add1b.cabler(4, 0, 6, 1);
-			add1b.cabler(5, 0, 7, 1);
+			add1b0.cabler(1, 0, 2, 0);
+			add1b0.cabler(6, 0, 7, 0);
+			add1b0.cabler(3, 0, 6, 0);
+			add1b0.cabler(4, 0, 6, 1);
+			add1b0.cabler(5, 0, 7, 1);
 			
-			add1b.définirPortSortieComposant(2, 0, 0);
-			add1b.définirPortSortieComposant(7, 0, 1);
+			add1b0.définirPortSortieComposant(2, 0, 0);
+			add1b0.définirPortSortieComposant(7, 0, 1);
 			
-			add1b.connecterPortEntreeComposant(1, 0, 0);
-			add1b.connecterPortEntreeComposant(3, 0, 0);
-			add1b.connecterPortEntreeComposant(4, 0, 0);
+			add1b0.connecterPortEntreeComposant(1, 0, 0);
+			add1b0.connecterPortEntreeComposant(3, 0, 0);
+			add1b0.connecterPortEntreeComposant(4, 0, 0);
 			
-			add1b.connecterPortEntreeComposant(1, 1, 1);
-			add1b.connecterPortEntreeComposant(3, 1, 1);
-			add1b.connecterPortEntreeComposant(5, 0, 1);
+			add1b0.connecterPortEntreeComposant(1, 1, 1);
+			add1b0.connecterPortEntreeComposant(3, 1, 1);
+			add1b0.connecterPortEntreeComposant(5, 0, 1);
 			
-			add1b.connecterPortEntreeComposant(2, 1, 2);
-			add1b.connecterPortEntreeComposant(4, 1, 2);
-			add1b.connecterPortEntreeComposant(5, 1, 2);
+			add1b0.connecterPortEntreeComposant(2, 1, 2);
+			add1b0.connecterPortEntreeComposant(4, 1, 2);
+			add1b0.connecterPortEntreeComposant(5, 1, 2);
 		} catch (ComposantInconnuException | PortInconnuException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		monCircuit.ajouterComposant(add1b);
+		Composite add1b1 = new Composite("Add1B1", 7, 3, 2, 1);
+		
+		add1b1.ajouterComposant(new Oux(1));
+		add1b1.ajouterComposant(new Oux(2));
+		add1b1.ajouterComposant(new Et(3));
+		add1b1.ajouterComposant(new Et(4));
+		add1b1.ajouterComposant(new Et(5));
+		add1b1.ajouterComposant(new Ou(6));
+		add1b1.ajouterComposant(new Ou(7));
+		
+		try {
+			add1b1.cabler(1, 0, 2, 0);
+			add1b1.cabler(6, 0, 7, 0);
+			add1b1.cabler(3, 0, 6, 0);
+			add1b1.cabler(4, 0, 6, 1);
+			add1b1.cabler(5, 0, 7, 1);
+			
+			add1b1.définirPortSortieComposant(2, 0, 0);
+			add1b1.définirPortSortieComposant(7, 0, 1);
+			
+			add1b1.connecterPortEntreeComposant(1, 0, 0);
+			add1b1.connecterPortEntreeComposant(3, 0, 0);
+			add1b1.connecterPortEntreeComposant(4, 0, 0);
+			
+			add1b1.connecterPortEntreeComposant(1, 1, 1);
+			add1b1.connecterPortEntreeComposant(3, 1, 1);
+			add1b1.connecterPortEntreeComposant(5, 0, 1);
+			
+			add1b1.connecterPortEntreeComposant(2, 1, 2);
+			add1b1.connecterPortEntreeComposant(4, 1, 2);
+			add1b1.connecterPortEntreeComposant(5, 1, 2);
+		} catch (ComposantInconnuException | PortInconnuException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Composite add1b2 = new Composite("Add1B2", 8, 3, 2, 1);
+		
+		add1b2.ajouterComposant(new Oux(1));
+		add1b2.ajouterComposant(new Oux(2));
+		add1b2.ajouterComposant(new Et(3));
+		add1b2.ajouterComposant(new Et(4));
+		add1b2.ajouterComposant(new Et(5));
+		add1b2.ajouterComposant(new Ou(6));
+		add1b2.ajouterComposant(new Ou(7));
+		
+		try {
+			add1b2.cabler(1, 0, 2, 0);
+			add1b2.cabler(6, 0, 7, 0);
+			add1b2.cabler(3, 0, 6, 0);
+			add1b2.cabler(4, 0, 6, 1);
+			add1b2.cabler(5, 0, 7, 1);
+			
+			add1b2.définirPortSortieComposant(2, 0, 0);
+			add1b2.définirPortSortieComposant(7, 0, 1);
+			
+			add1b2.connecterPortEntreeComposant(1, 0, 0);
+			add1b2.connecterPortEntreeComposant(3, 0, 0);
+			add1b2.connecterPortEntreeComposant(4, 0, 0);
+			
+			add1b2.connecterPortEntreeComposant(1, 1, 1);
+			add1b2.connecterPortEntreeComposant(3, 1, 1);
+			add1b2.connecterPortEntreeComposant(5, 0, 1);
+			
+			add1b2.connecterPortEntreeComposant(2, 1, 2);
+			add1b2.connecterPortEntreeComposant(4, 1, 2);
+			add1b2.connecterPortEntreeComposant(5, 1, 2);
+		} catch (ComposantInconnuException | PortInconnuException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Composite add1b3 = new Composite("Add1B3", 9, 3, 2, 1);
+		
+		add1b3.ajouterComposant(new Oux(1));
+		add1b3.ajouterComposant(new Oux(2));
+		add1b3.ajouterComposant(new Et(3));
+		add1b3.ajouterComposant(new Et(4));
+		add1b3.ajouterComposant(new Et(5));
+		add1b3.ajouterComposant(new Ou(6));
+		add1b3.ajouterComposant(new Ou(7));
+		
+		try {
+			add1b3.cabler(1, 0, 2, 0);
+			add1b3.cabler(6, 0, 7, 0);
+			add1b3.cabler(3, 0, 6, 0);
+			add1b3.cabler(4, 0, 6, 1);
+			add1b3.cabler(5, 0, 7, 1);
+			
+			add1b3.définirPortSortieComposant(2, 0, 0);
+			add1b3.définirPortSortieComposant(7, 0, 1);
+			
+			add1b3.connecterPortEntreeComposant(1, 0, 0);
+			add1b3.connecterPortEntreeComposant(3, 0, 0);
+			add1b3.connecterPortEntreeComposant(4, 0, 0);
+			
+			add1b3.connecterPortEntreeComposant(1, 1, 1);
+			add1b3.connecterPortEntreeComposant(3, 1, 1);
+			add1b3.connecterPortEntreeComposant(5, 0, 1);
+			
+			add1b3.connecterPortEntreeComposant(2, 1, 2);
+			add1b3.connecterPortEntreeComposant(4, 1, 2);
+			add1b3.connecterPortEntreeComposant(5, 1, 2);
+		} catch (ComposantInconnuException | PortInconnuException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Gen4bc2 A = new Gen4bc2(1);
+		A.setValeur(-2);
+		Gen4bc2 B = new Gen4bc2(2);
+		B.setValeur(3);
+		
 		monCircuit.ajouterComposant(A);
 		monCircuit.ajouterComposant(B);
-		monCircuit.ajouterComposant(S);
-		monCircuit.ajouterComposant(Ce);
-		monCircuit.ajouterComposant(Cs);
-			
+		monCircuit.ajouterComposant(new Aff4bc2(3));
+		monCircuit.ajouterComposant(new Led(4));
+		monCircuit.ajouterComposant(new Gnd(5));
+		
+		monCircuit.ajouterComposant(add1b0);
+		monCircuit.ajouterComposant(add1b1);
+		monCircuit.ajouterComposant(add1b2);
+		monCircuit.ajouterComposant(add1b3);
+	
+		
 		try {
-			monCircuit.cabler(8, 0, 0, 0);
-			monCircuit.cabler(9, 0, 0, 1);
-			monCircuit.cabler(10, 0, 0, 2);
+			//Cablage du A
+			monCircuit.cabler(1, 0, 6, 0);
+			monCircuit.cabler(1, 1, 7, 0);
+			monCircuit.cabler(1, 2, 8, 0);
+			monCircuit.cabler(1, 3, 9, 0);
 			
-			monCircuit.cabler(0, 0, 11, 0);
-			monCircuit.cabler(0, 1, 12, 0);
+			//Cablage du B
+			monCircuit.cabler(2, 0, 6, 1);
+			monCircuit.cabler(2, 1, 7, 1);
+			monCircuit.cabler(2, 2, 8, 1);
+			monCircuit.cabler(2, 3, 9, 1);
+			
+			//Retenue entrante de 0
+			monCircuit.cabler(5, 0, 6, 2);
+			
+			//retenues propagées
+			monCircuit.cabler(6, 1, 7, 2);
+			monCircuit.cabler(7, 1, 8, 2);
+			monCircuit.cabler(8, 1, 9, 2);
+			monCircuit.cabler(9, 1, 4, 0);
+			
+			//resultat
+			monCircuit.cabler(6, 0, 3, 0);
+			monCircuit.cabler(7, 0, 3, 1);
+			monCircuit.cabler(8, 0, 3, 2);
+			monCircuit.cabler(9, 0, 3, 3);
 		} catch (ComposantInconnuException | PortInconnuException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		
 		try {
-			monCircuit.changerItr(8);
-			monCircuit.changerItr(9);
-			monCircuit.changerItr(10);
-			
 			monCircuit.execute();
-			System.out.println(monCircuit);
-		} catch (CircuitNonCompletException | ComposantInconnuException | ActionInterditeException e) {
+		} catch (CircuitNonCompletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println(monCircuit);
+		
+		
+		
+			
+		
 		
 		
 		

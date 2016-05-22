@@ -31,16 +31,21 @@ public class Gen4bc2 extends Generateur {
 	public void calculerSorties() {
 		if (valeur < 0)
 		{
-			portsSorties[0].setValeur(true);
-			if (valeur > -5) portsSorties[1].setValeur(true);
-			if (valeur == -1 | valeur == -2 | valeur == -5 | valeur == -6) portsSorties[2].setValeur(true);
+			portsSorties[3].setValeur(true);
+			if (valeur > -5) 
+				portsSorties[2].setValeur(true);
+			if (valeur == -1 | valeur == -2 | valeur == -5 | valeur == -6) 
+				portsSorties[1].setValeur(true);
 		}
 		else
 		{
-			if (valeur - 4 >= 0) portsSorties[1].setValeur(true);
-			if (valeur == 2 | valeur == 6 | valeur == 7) portsSorties[2].setValeur(true);
+			if (valeur - 4 >= 0) 
+				portsSorties[2].setValeur(true);
+			if (valeur == 2 | valeur == 6 | valeur == 7) 
+				portsSorties[1].setValeur(true);
 		}
-		if (valeur % 2 != 0) portsSorties[3].setValeur(true);
+		if (valeur % 2 != 0) 
+			portsSorties[0].setValeur(true);
 		
 	}
 
@@ -57,7 +62,7 @@ public class Gen4bc2 extends Generateur {
 	public String toString()
 	{
 
-		String s = "<" + id + "| Itr (" + 0 + "," + portsSorties.length + "){" + valeur + "}->";
+		String s = "<" + id + "| Gen4bc2 (" + 0 + "," + portsSorties.length + "){" + valeur + "}->";
 
 		for (int i = 0; i < portsSorties.length; i++) 
 		{
