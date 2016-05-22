@@ -1,1 +1,8 @@
 /bin/
+/ParseException.java
+/Reader.java
+/ReaderConstants.java
+/ReaderTokenManager.java
+/SimpleCharStream.java
+/Token.java
+/TokenMgrError.java
