@@ -1,5 +1,6 @@
 package projet.composant;
 
+import projet.exception.ValeurIncorrecteException;
 import projet.port.PortSortie;
 
 public class Gen4bc2 extends Generateur {
@@ -23,7 +24,18 @@ public class Gen4bc2 extends Generateur {
 
 	@Override
 	public void calculerSorties() {
-		// TODO Auto-generated method stub
+		if (valeur < 0)
+		{
+			portsSorties[0].setValeur(true);
+			if (valeur > -5) portsSorties[1].setValeur(true);
+			if (valeur == -1 | valeur == -2 | valeur == -5 | valeur == -6) portsSorties[2].setValeur(true);
+		}
+		else
+		{
+			if (valeur - 4 >= 0) portsSorties[1].setValeur(true);
+			if (valeur == 2 | valeur == 6 | valeur == 7) portsSorties[2].setValeur(true);
+		}
+		if (valeur % 2 != 0) portsSorties[3].setValeur(true);
 		
 	}
 
@@ -31,7 +43,8 @@ public class Gen4bc2 extends Generateur {
 		return valeur;
 	}
 
-	public void setValeur(int valeur) {
+	public void setValeur(int valeur) throws ValeurIncorrecteException {
+		if (valeur > 7 | valeur < -8) throw new ValeurIncorrecteException();
 		this.valeur = valeur;
 	}
 	
