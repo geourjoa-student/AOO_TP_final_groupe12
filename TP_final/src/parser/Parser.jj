@@ -2,12 +2,20 @@ options{STATIC=false;}
 PARSER_BEGIN(Reader)
 package jus.aoo.boole.reader;
 import jus.aoo.boole.circuit.*;
-
+/**
+* La compilation avec javacc fonctionne
+* On a préféré ne pas la faire pour de pas alourdir
+* de code auto généré avec d'objets
+* détaillés plus bas
+*/
 public class Reader extends ReaderUtilities
 {
-	public _Circuit read() throws Exception {return TOUT();}
+	public _Circuit read() throws Exception {return TOUTTOUT();}
 }
+
 PARSER_END(Reader)
+
+//Permet de créer tous les tokens nécessaires
 SKIP :{" " |"\r" | "\t" | "\n"}
 TOKEN :{
   <NUM: ( <DIGIT> )+ >
@@ -33,21 +41,38 @@ TOKEN :{
 | < NOM: (<LETTER>)+ >
 }
 
+/**
+* Le parser est logique.
+* Par contre il a été très difficile de trouver de
+* la documentation sur javacc. Du coup on a eu des
+* problemes. Ici, les objets devraient être passés en paramètre
+*/
 circuit TOUTTOUT(): {Circuit circuit;}
 {
   circuit=TOUT() <EOF>
   {return circuit;}
 }
+
+/**
+* Ici on sépare en n composites et 1 circuit
+* La création de composite pause problème ici.
+* Nous aurions surement du prendre le probleme à l'envers
+* Car ici il manque les attributs pour le constructeur
+*/
 circuit TOUT(): {int id;Circuit circuit;Composite composite;}
 {
   {id = 1;}
   (composite=COMPOSITE(id)
   {id++;
-  circuit.ajouterComposant(composite);})+
+  circuit.ajouterComposant(composite);})*
   circuit=CIRCUIT()
   {return circuit;}
 }
 
+/**
+* Ne requiert pas de commentaires particuliers, toujours la même chose
+* Toujours les mêmes soucis de passages des objets aux fonctions suivantes
+*/
 circuit CIRCUIT(): {Circuit circuit;Composant composant;string nom;}
 {
   <STRINGCIRCUIT> nom=<NOM>
