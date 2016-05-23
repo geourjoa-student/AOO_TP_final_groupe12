@@ -44,21 +44,21 @@ public class Jdom {
 				composant.setAttribute(idf);
 				Attribute type = new Attribute("type", composantCourant.getClass().getName());
 				composant.setAttribute(type);
+				
 				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie = new Attribute("sortie", Integer.toString(composantCourant.getNiemePortSortie(j).getId_port()));
 					connexion.setAttribute(sortie);
 					for (int k = 0; k < composantCourant.getNiemePortSortie(j).getListePortEntreeConnectes().size(); k++)
-						;
 					{
 						Element destination = new Element("Destination");
 						connexion.addContent(destination);
-						Attribute composantdest = new Attribute("composant", c.composants.get(i).getNiemePortSortie(j)
-								.getListePortEntreeConnectes().get(k).getProprietairePort().getId());
+						Attribute composantdest = new Attribute("composant", Integer.toString(composantCourant.getNiemePortSortie(j)
+								.getListePortEntreeConnectes().get(k).getProprietairePort().getId()));
 						destination.setAttribute(composantdest);
-						Attribute entree = new Attribute("entree",
-								c.composants.get(i).getNiemePortSortie(j).getListePortEntreeConnectes().get(k).getId());
+						Attribute entree = new Attribute("entree", Integer.toString(
+								composantCourant.getNiemePortSortie(j).getListePortEntreeConnectes().get(k).getId_port()));
 						destination.setAttribute(entree);
 					}
 				}
