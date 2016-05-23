@@ -1,3 +1,4 @@
+import parser.Jdom;
 import projet.composant.*;
 import projet.exception.ActionInterditeException;
 import projet.exception.CircuitNonCompletException;
@@ -229,7 +230,9 @@ public class LanceurDeBoole {
 		
 		System.out.println(monCircuit);
 		
+		Jdom monjj = new Jdom();
 		
+		monjj.createDoc(monCircuit);
 		
 			
 		
