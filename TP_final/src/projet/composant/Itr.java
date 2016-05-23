@@ -4,6 +4,10 @@ import java.util.Iterator;
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
+/**
+ * @author anthony
+ * Classe représentant un Itr qui fournit un niveau 1 ou 0 selon l'état de l'interrupteur
+ */
 public class Itr extends Generateur {
 	
 	static final boolean HAUT = true;

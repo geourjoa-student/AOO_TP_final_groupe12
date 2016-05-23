@@ -1,18 +1,21 @@
 package projet.composant;
 
-
-
 import java.util.Iterator;
 
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
+/**
+ * @author anthony
+ *
+ *         Repréente le concept d'une composant électronique Et
+ */
 public class Et extends Transformateur {
 
 	public Et(int id) {
-		
-		nbPortsEntree=2;
-		nbPortsSortie=1;
+
+		nbPortsEntree = 2;
+		nbPortsSortie = 1;
 		portsEntrees = new PortEntree[nbPortsEntree];
 		portsSorties = new PortSortie[nbPortsSortie];
 
@@ -22,8 +25,7 @@ public class Et extends Transformateur {
 		portsSorties[0] = new PortSortie(this, 0);
 
 		this.id = id;
-	
-		
+
 	}
 
 	@Override
@@ -31,7 +33,6 @@ public class Et extends Transformateur {
 		this.portsSorties[0].setValeur(this.portsEntrees[0].isValeur() && this.portsEntrees[1].isValeur());
 		this.portsSorties[0].propagerValeur();
 	}
-
 
 	@Override
 	public String toString() {
@@ -44,9 +45,9 @@ public class Et extends Transformateur {
 			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
 				PortEntree pe = it.next();
 				s += pe.getProprietairePort().getId() + "#" + pe.getId_port();
-				
-				if(it.hasNext()){
-					s+= ",";
+
+				if (it.hasNext()) {
+					s += ",";
 				}
 			}
 			s += ")";

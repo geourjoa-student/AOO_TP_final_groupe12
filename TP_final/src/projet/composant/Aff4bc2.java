@@ -14,10 +14,6 @@ public class Aff4bc2 extends Recepteur {
 
 	private int valeur;
 
-	/**
-	 * @param id
-	 *            id de l'afficheur crée
-	 */
 	public Aff4bc2(int id) {
 		nbPortsEntree = 4;
 		nbPortsSortie = 0;

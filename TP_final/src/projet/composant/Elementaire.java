@@ -4,55 +4,60 @@ import projet.exception.PortInconnuException;
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
+/**
+ * @author anthony
+ *
+ *         Classe abstraite permettant de généraliser des fonctions associés aux
+ *         composants élémentaires (Et, Ou, etc)
+ */
 public abstract class Elementaire implements Composant {
 
 	protected int id;
-	
+
 	protected PortEntree[] portsEntrees;
 
 	protected PortSortie[] portsSorties;
-	
+
 	protected int nbPortsSortie;
-	
+
 	protected int nbPortsEntree;
 
-	public int getId()
-	{
+	public int getId() {
 		return id;
 	}
-	
-	public int getNbPortsSorties(){
+
+	public int getNbPortsSorties() {
 		return nbPortsSortie;
 	}
-	
-	public int getNbPortsEntrees(){
+
+	public int getNbPortsEntrees() {
 		return nbPortsEntree;
 	}
 
-	public PortSortie getNiemePortSortie(int n) throws PortInconnuException{
-		if(n>=nbPortsSortie)
+	public PortSortie getNiemePortSortie(int n) throws PortInconnuException {
+		if (n >= nbPortsSortie)
 			throw new PortInconnuException();
 		return portsSorties[n];
 	}
 
 	@Override
-	public PortEntree getNiemePortEntree(int n) throws PortInconnuException{
-		if(n>=nbPortsEntree)
+	public PortEntree getNiemePortEntree(int n) throws PortInconnuException {
+		if (n >= nbPortsEntree)
 			throw new PortInconnuException();
 		return portsEntrees[n];
 	}
-	
-	public boolean portsTousConnectes(){
+
+	public boolean portsTousConnectes() {
 		for (int i = 0; i < nbPortsEntree; i++) {
-			if(!portsEntrees[i].estConnecte())
-				return false;		
+			if (!portsEntrees[i].estConnecte())
+				return false;
 		}
-		
+
 		for (int i = 0; i < nbPortsSortie; i++) {
-			if(!portsSorties[i].estConnecte())
-				return false;		
+			if (!portsSorties[i].estConnecte())
+				return false;
 		}
-		
+
 		return true;
 	}
 }
