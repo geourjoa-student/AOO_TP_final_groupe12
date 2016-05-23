@@ -15,7 +15,7 @@ public class PortSortie extends Port {
 
 	/**
 	 * @param proprietaire
-	 *            : COmme pour un port générique
+	 *            : Comme pour un port générique
 	 * @param id
 	 *            : De même
 	 */
