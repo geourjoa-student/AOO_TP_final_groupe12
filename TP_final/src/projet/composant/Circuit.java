@@ -27,6 +27,12 @@ public class Circuit {
 	public void ajouterComposant(Composant c) {
 		composants.put(c.getId(), c);
 	}
+	
+	
+
+	public Map<Integer, Composant> getComposants() {
+		return composants;
+	}
 
 	public void cabler(int idComposantPortSortie, int numeroPortSortie, int idComposantPortEntree,
 			int numeroPortEntre) throws ComposantInconnuException, PortInconnuException {

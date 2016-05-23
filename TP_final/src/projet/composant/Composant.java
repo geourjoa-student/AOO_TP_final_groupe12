@@ -18,4 +18,7 @@ public interface Composant {
 	
 	public boolean portsTousConnectes();
 	
+	public int getLengthSorties();
+	
+	public int getLengthEntrees();
 }

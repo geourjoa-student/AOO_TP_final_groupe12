@@ -20,6 +20,14 @@ public abstract class Elementaire implements Composant {
 	{
 		return id;
 	}
+	
+	public int getLengthSorties(){
+		return portsSorties.length;
+	}
+	
+	public int getLengthEntrees(){
+		return portsEntrees.length;
+	}
 
 	public PortSortie getNiemePortSortie(int n) throws PortInconnuException{
 		if(n>=nbPortsSortie)
