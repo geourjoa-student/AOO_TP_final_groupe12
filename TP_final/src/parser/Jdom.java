@@ -35,7 +35,7 @@ public class Jdom {
 				Attribute type = new Attribute("type", composantCourant.getClass().getName());
 				composant.setAttribute(type);
 				
-				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
+				for (int j = 0; j < composantCourant.getNbPortsSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie;
@@ -72,10 +72,10 @@ public class Jdom {
 			Attribute nomComposite = new Attribute("nom", ((Composite) c).getNom());
 			composite.setAttribute(nomComposite);
 			Attribute entreesComposite = new Attribute("entrees",
-					Integer.toString(((Composite) c).getLengthEntrees()));
+					Integer.toString(((Composite) c).getNbPortsEntrees()));
 			composite.setAttribute(entreesComposite);
 			Attribute sortiesComposite = new Attribute("sorties",
-					Integer.toString(((Composite) c).getLengthSorties()));
+					Integer.toString(((Composite) c).getNbPortsSorties()));
 			composite.setAttribute(sortiesComposite);
 
   		 for (int i = 1; i <= c.getComposants().size(); i++) {
@@ -92,7 +92,7 @@ public class Jdom {
 				Attribute type = new Attribute("type", composantCourant.getClass().getName());
 				composant.setAttribute(type);
 				
-				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
+				for (int j = 0; j < composantCourant.getNbPortsSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie;
@@ -118,7 +118,7 @@ public class Jdom {
 				}
     	  Element interfaceES = new Element("Interface");
           composite.addContent(interfaceES);
-          for(int x=0;x<composantCourant.getLengthEntrees();x++)
+          for(int x=0;x<composantCourant.getNbPortsEntrees();x++)
           {
         	  Element entreesInterface = new Element("Entree");
               interfaceES.addContent(entreesInterface);  
@@ -149,10 +149,10 @@ public class Jdom {
 			Attribute nomComposite = new Attribute("nom", ((Composite) c).getNom());
 			composite.setAttribute(nomComposite);
 			Attribute entreesComposite = new Attribute("entrees",
-					Integer.toString(((Composite) c).getLengthEntrees()));
+					Integer.toString(((Composite) c).getNbPortsEntrees()));
 			composite.setAttribute(entreesComposite);
 			Attribute sortiesComposite = new Attribute("sorties",
-					Integer.toString(((Composite) c).getLengthSorties()));
+					Integer.toString(((Composite) c).getNbPortsSorties()));
 			composite.setAttribute(sortiesComposite);
 
 		 for (int i = 1; i < c.getComposants().size(); i++) {
@@ -169,7 +169,7 @@ public class Jdom {
 				Attribute type = new Attribute("type", composantCourant.getClass().getName());
 				composant.setAttribute(type);
 				
-				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
+				for (int j = 0; j < composantCourant.getNbPortsSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie;
@@ -194,7 +194,7 @@ public class Jdom {
 				}
   	  Element interfaceES = new Element("Interface");
         composite.addContent(interfaceES);
-        for(int x=0;x<composantCourant.getLengthEntrees();x++)
+        for(int x=0;x<composantCourant.getNbPortsEntrees();x++)
         {
       	  Element entreesInterface = new Element("Entree");
             interfaceES.addContent(entreesInterface);  

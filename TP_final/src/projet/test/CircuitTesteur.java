@@ -1,114 +1,111 @@
 package projet.test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-
 import projet.composant.Circuit;
 import projet.composant.Composant;
 import projet.composant.Itr;
 import projet.composant.Led;
 import projet.exception.CircuitNonCompletException;
 
-public class CircuitTesteur extends Circuit{
+public class CircuitTesteur extends Circuit {
 
 	public CircuitTesteur() {
 		super("Circuit testeur");
 	}
-	
+
 	private List<Itr> getListeItr() {
-		
+
 		List<Itr> listeItr = new ArrayList<Itr>();
-		
+
 		for (Composant c : composants.values()) {
 			if (c instanceof Itr) {
 				listeItr.add((Itr) c);
 			}
 		}
-		
+
 		return listeItr;
-		
+
 	}
-	
+
 	private List<Led> getListeLed() {
-		
+
 		List<Led> listeLed = new ArrayList<Led>();
-		
+
 		for (Composant c : composants.values()) {
 			if (c instanceof Led) {
 				listeLed.add((Led) c);
 			}
 		}
-		
+
 		return listeLed;
-		
+
 	}
-		
-	
-	public void tester () {
-		
+
+	public void tester() {
+
 		List<Led> listeLed = getListeLed();
 		List<Itr> listeItr = getListeItr();
-		
+
 		afficherEnTete(listeItr, listeLed);
-		
-		for(int i=0; i<Math.pow(2, listeItr.size()); i++){
-			
+
+		for (int i = 0; i < Math.pow(2, listeItr.size()); i++) {
+
 			try {
-				modifierItr(listeItr,i);
+				modifierItr(listeItr, i);
 				execute();
-				afficherResultat(listeItr,listeLed);
+				afficherResultat(listeItr, listeLed);
 			} catch (CircuitNonCompletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//Afficher
-			
+			// Afficher
+
 		}
-		
+
 	}
 
 	private void afficherEnTete(List<Itr> listeItr, List<Led> listeLed) {
-		String s ="|";
-		
+
+		String s = "* Table de vérité, " + listeItr.size() + " Itr et " + listeLed.size() + " Led*\n|";
+
 		for (Iterator<Itr> iterator = listeItr.iterator(); iterator.hasNext();) {
-			
-			s+=  " " + iterator.next().getId() + " |";
-			
+
+			s += " " + iterator.next().getId() + " |";
+
 		}
-		
-		s+="| ";
-		
+
+		s += "| ";
+
 		for (Iterator<Led> iterator = listeLed.iterator(); iterator.hasNext();) {
-			s+=  iterator.next().getId() + " | ";
-			
+			s += iterator.next().getId() + " | ";
+
 		}
-		
-		System.out.println(s+"\n");
-		
+
+		System.out.println(s + "\n");
+
 	}
 
 	private void afficherResultat(List<Itr> listeItr, List<Led> listeLed) {
-		
-		String s ="|";
-		
+
+		String s = "|";
+
 		for (Iterator<Itr> iterator = listeItr.iterator(); iterator.hasNext();) {
-			
-			s+=  " " + toInt(iterator.next().getEtat()) + " |";
-			
+
+			s += " " + toInt(iterator.next().getEtat()) + " |";
+
 		}
-		
-		s+="| ";
-		
+
+		s += "| ";
+
 		for (Iterator<Led> iterator = listeLed.iterator(); iterator.hasNext();) {
-			s+=  toInt(iterator.next().estAllume()) + " | ";
-			
+			s += toInt(iterator.next().estAllume()) + " | ";
+
 		}
-		
+
 		System.out.println(s);
-		
+
 	}
 
 	private String toInt(Boolean b) {
@@ -116,23 +113,20 @@ public class CircuitTesteur extends Circuit{
 	}
 
 	private void modifierItr(List<Itr> listeItr, int n) {
-		
-	
+
 		int valeurRestante = n;
-		
-		for (int i = listeItr.size()-1; i >=0 ; i--) {
-	
-			if(valeurRestante>0 && valeurRestante>=Math.pow(2, i)){
+
+		for (int i = listeItr.size() - 1; i >= 0; i--) {
+
+			if (valeurRestante > 0 && valeurRestante >= Math.pow(2, i)) {
 				listeItr.get(i).setEtat(true);
-				valeurRestante-=Math.pow(2, i);
+				valeurRestante -= Math.pow(2, i);
 			}
-				
+
 			else
 				listeItr.get(i).setEtat(false);
-			
+
 		}
 	}
-	
-	
 
 }

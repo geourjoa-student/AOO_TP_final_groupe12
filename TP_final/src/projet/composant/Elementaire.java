@@ -21,11 +21,11 @@ public abstract class Elementaire implements Composant {
 		return id;
 	}
 	
-	public int getLengthSorties(){
+	public int getNbPortsSorties(){
 		return nbPortsSortie;
 	}
 	
-	public int getLengthEntrees(){
+	public int getNbPortsEntrees(){
 		return nbPortsEntree;
 	}
 
