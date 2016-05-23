@@ -27,7 +27,6 @@ public class Jdom {
 		// Boucle pour parcourir tous les composants
 		for (int i = 1; i <= c.getComposants().size(); i++) {
 			Composant composantCourant = c.getComposants().get(i);
-			System.out.println(composantCourant.getClass().getName());
 			// Si on a un composite
 			if (composantCourant instanceof Composite) {
 				// Lancer la r�cursion sur composite

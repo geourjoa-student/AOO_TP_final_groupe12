@@ -1,22 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tout>
   <Circuit nom="monCircuit">
-    <Composant idf="1" type="projet.composant.Gnd">
+    <Composant idf="1" type="projet.composant.Vcc">
+      <Connexion sortie="0">
+        <Destination composant="3" entree="0" />
+        <Destination composant="3" entree="1" />
+      </Connexion>
+    </Composant>
+    <Composant idf="2" type="projet.composant.Gnd">
+      <Connexion sortie="0">
+        <Destination composant="3" entree="2" />
+      </Connexion>
+    </Composant>
+    <Composant idf="4" type="projet.composant.Led" />
+    <Composant idf="5" type="projet.composant.Led" />
+  </Circuit>
+  <Composite nom="Add1B" entrees="2" sorties="2">
+    <Composant idf="1" type="projet.composant.Oux">
       <Connexion sortie="0">
         <Destination composant="2" entree="0" />
       </Connexion>
     </Composant>
-    <Composant idf="3" type="projet.composant.Led" />
-  </Circuit>
-  <Composite nom="nomCompite" entrees="1" sorties="1">
-    <Composant idf="1" type="projet.composant.Non">
+    <Interface>
+      <Entree port="1" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="1" port="0" />
+    </Interface>
+    <Composant idf="2" type="projet.composant.Oux">
       <Connexion sortie="0">
-        <Destination composant="3" entree="0" />
+        <Destination composant="4" entree="0" />
       </Connexion>
     </Composant>
     <Interface>
       <Entree port="1" />
-      <Sortie Interface="1" composante="1" port="0" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="2" port="0" />
+    </Interface>
+    <Composant idf="3" type="projet.composant.Et">
+      <Connexion sortie="0">
+        <Destination composant="6" entree="0" />
+      </Connexion>
+    </Composant>
+    <Interface>
+      <Entree port="1" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="3" port="0" />
+    </Interface>
+    <Composant idf="4" type="projet.composant.Et">
+      <Connexion sortie="0">
+        <Destination composant="6" entree="1" />
+      </Connexion>
+    </Composant>
+    <Interface>
+      <Entree port="1" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="4" port="0" />
+    </Interface>
+    <Composant idf="5" type="projet.composant.Et">
+      <Connexion sortie="0">
+        <Destination composant="7" entree="1" />
+      </Connexion>
+    </Composant>
+    <Interface>
+      <Entree port="1" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="5" port="0" />
+    </Interface>
+    <Composant idf="6" type="projet.composant.Ou">
+      <Connexion sortie="0">
+        <Destination composant="7" entree="0" />
+      </Connexion>
+    </Composant>
+    <Interface>
+      <Entree port="1" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="6" port="0" />
+    </Interface>
+    <Composant idf="7" type="projet.composant.Ou">
+      <Connexion sortie="0">
+        <Destination composant="5" entree="0" />
+      </Connexion>
+    </Composant>
+    <Interface>
+      <Entree port="1" />
+      <Entree port="2" />
+      <Sortie Interface="1" composante="7" port="0" />
     </Interface>
   </Composite>
 </Tout>
