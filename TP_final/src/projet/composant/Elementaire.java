@@ -22,11 +22,11 @@ public abstract class Elementaire implements Composant {
 	}
 	
 	public int getLengthSorties(){
-		return portsSorties.length;
+		return nbPortsSortie;
 	}
 	
 	public int getLengthEntrees(){
-		return portsEntrees.length;
+		return nbPortsEntree;
 	}
 
 	public PortSortie getNiemePortSortie(int n) throws PortInconnuException{

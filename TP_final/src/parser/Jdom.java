@@ -20,8 +20,9 @@ public class Jdom {
 		racine.addContent(circuit);
 		Attribute nom = new Attribute("nom", c.getNom());
 		circuit.setAttribute(nom);
-		for (int i = 0; i < c.getComposants().size(); i++) {
+		for (int i = 1; i <= c.getComposants().size(); i++) {
 			Composant composantCourant = c.getComposants().get(i);
+			System.out.println(composantCourant.getClass().getName());
 			if (composantCourant instanceof Composite) {
 				funComposite1((Circuit) composantCourant);
 
@@ -77,7 +78,7 @@ public class Jdom {
 					Integer.toString(((Composite) c).getLengthSorties()));
 			composite.setAttribute(sortiesComposite);
 
-  		 for (int i = 0; i < c.getComposants().size(); i++) {
+  		 for (int i = 1; i <= c.getComposants().size(); i++) {
 			Composant composantCourant = c.getComposants().get(i);
 			if (composantCourant instanceof Composite) {
 				funComposite2((Circuit) composantCourant);
@@ -132,7 +133,7 @@ public class Jdom {
 		try {
 			composantCo = new Attribute("composante",Integer.toString(composantCourant.getNiemePortSortie(0).getProprietairePort().getId()));
 	        sortieInterface.setAttribute(composantCo); 
-	        Attribute entreeCo = new Attribute("entree",Integer.toString(composantCourant.getNiemePortSortie(0).getId_port()));
+	        Attribute entreeCo = new Attribute("port",Integer.toString(composantCourant.getNiemePortSortie(0).getId_port()));
 	        sortieInterface.setAttribute(entreeCo);
 		} catch (PortInconnuException e) {
 			// TODO Auto-generated catch block
@@ -154,7 +155,7 @@ public class Jdom {
 					Integer.toString(((Composite) c).getLengthSorties()));
 			composite.setAttribute(sortiesComposite);
 
-		 for (int i = 0; i < c.getComposants().size(); i++) {
+		 for (int i = 1; i < c.getComposants().size(); i++) {
 			Composant composantCourant = c.getComposants().get(i);
 			if (composantCourant instanceof Composite) {
 				funComposite1((Circuit) composantCourant);
@@ -208,7 +209,7 @@ public class Jdom {
 		try {
 			composantCo = new Attribute("composante",Integer.toString(composantCourant.getNiemePortSortie(0).getProprietairePort().getId()));
 	        sortieInterface.setAttribute(composantCo); 
-	        Attribute entreeCo = new Attribute("entree",Integer.toString(composantCourant.getNiemePortSortie(0).getId_port()));
+	        Attribute entreeCo = new Attribute("port",Integer.toString(composantCourant.getNiemePortSortie(0).getId_port()));
 	       sortieInterface.setAttribute(entreeCo);
 		} catch (PortInconnuException e) {
 			// TODO Auto-generated catch block
