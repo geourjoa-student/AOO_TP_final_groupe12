@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tout>
+  <Circuit nom="monCircuit">
+    <Composant idf="1" type="projet.composant.Gnd">
+      <Connexion sortie="0">
+        <Destination composant="2" entree="0" />
+      </Connexion>
+    </Composant>
+    <Composant idf="3" type="projet.composant.Led" />
+  </Circuit>
+  <Composite nom="nomCompite" entrees="1" sorties="1">
+    <Composant idf="1" type="projet.composant.Non">
+      <Connexion sortie="0">
+        <Destination composant="3" entree="0" />
+      </Connexion>
+    </Composant>
+    <Interface>
+      <Entree port="1" />
+      <Sortie Interface="1" composante="1" port="0" />
+    </Interface>
+  </Composite>
+</Tout>

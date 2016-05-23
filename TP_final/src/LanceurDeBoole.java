@@ -4,6 +4,7 @@ import projet.exception.ActionInterditeException;
 import projet.exception.CircuitNonCompletException;
 import projet.exception.ComposantInconnuException;
 import projet.exception.PortInconnuException;
+import projet.test.CircuitTesteur;
 
 
 public class LanceurDeBoole {
@@ -11,7 +12,7 @@ public class LanceurDeBoole {
 	public static void main(String[] args) {
 		
 		
-		Circuit monCircuit = new Circuit("monCircuit");
+		CircuitTesteur monCircuit = new CircuitTesteur();
 		
 		Composite nonComposite = new Composite("nomCompite", 2, 1, 1, 1);
 		nonComposite.ajouterComposant(new Non(1));
@@ -23,7 +24,7 @@ public class LanceurDeBoole {
 			e1.printStackTrace();
 		}
 		
-		monCircuit.ajouterComposant(new Gnd(1));
+		monCircuit.ajouterComposant(new Itr(1));
 		monCircuit.ajouterComposant(nonComposite);
 		monCircuit.ajouterComposant(new Led(3));
 		
@@ -36,18 +37,13 @@ public class LanceurDeBoole {
 		}
 			
 		
-		try {
-			monCircuit.execute();
-		} catch (CircuitNonCompletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		monCircuit.tester();
 		
 		System.out.println(monCircuit);
 		
-		Jdom monjj = new Jdom();
+		/*Jdom monjj = new Jdom();
 		
-		monjj.createDoc(monCircuit);
+		monjj.createDoc(monCircuit);*/
 		
 			
 		

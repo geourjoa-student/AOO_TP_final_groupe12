@@ -9,7 +9,7 @@ import projet.exception.CircuitNonCompletException;
 import projet.exception.ComposantInconnuException;
 import projet.exception.PortInconnuException;
 
-public class TestOux extends Circuit implements CircuitTesteur {
+public class TestOux extends Circuit {
 
 	public TestOux() {
 		super("TestOux");
@@ -29,7 +29,6 @@ public class TestOux extends Circuit implements CircuitTesteur {
 		}
 	}
 
-	@Override
 	public void tester() {
 		// TODO A reimplement comme décrit dans l'interface
 

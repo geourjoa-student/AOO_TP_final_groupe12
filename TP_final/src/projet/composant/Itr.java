@@ -21,6 +21,11 @@ public class Itr extends Generateur {
 	{
 		etat = !etat;
 	}
+	
+	public void setEtat(boolean nouvelEtat)
+	{
+		etat = nouvelEtat;
+	}
 
 	@Override
 	public void calculerSorties()
