@@ -1,10 +1,13 @@
 package projet.composant;
 
-import java.util.Iterator;
-
 import projet.port.PortEntree;
 import projet.port.PortSortie;
 
+/**
+ * @author anthony
+ *
+ *         Repréente le concept d'une composant électronique Oux
+ */
 public class Oux extends Transformateur {
 
 	@Override
@@ -29,30 +32,4 @@ public class Oux extends Transformateur {
 		this.id = id;
 	}
 
-	@Override
-	public String toString()
-	{
-		
-
-		String s = "<" + id + "| Oux (" +  portsEntrees.length + "," +  portsSorties.length + ") -> ";
-
-		for (int i = 0; i < portsSorties.length; i++) 
-		{
-			s += "#" + portsSorties[i].getId_port() +"(";
-					
-			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
-				PortEntree pe = it.next();
-				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port();
-				
-				if(it.hasNext()){
-					s+= ",";
-				}
-			}		
-			s+=")";			
-		}
-
-		s += ">";
-
-		return s;
-	}
 }

@@ -9,7 +9,12 @@ import projet.exception.CircuitNonCompletException;
 import projet.exception.ComposantInconnuException;
 import projet.exception.PortInconnuException;
 
-public class TestOux extends Circuit {
+/**
+ * @author anthony Circuit un peu spécial permettant de tester le composant oux.
+ *         En réalité, il s'agit d'un circuit classique, précablé et
+ *         implémentant Testeur
+ */
+public class TestOux extends Circuit implements Testeur {
 
 	public TestOux() {
 		super("TestOux");
@@ -18,7 +23,7 @@ public class TestOux extends Circuit {
 		ajouterComposant(new Itr(3));
 		ajouterComposant(new Itr(4));
 
-		// Le cablage est sur, il n'y aura pas d'exception
+		// Le cablage est sur, il n'y aura pas d'exception.
 		try {
 			cabler(3, 0, 1, 0);
 			cabler(4, 0, 1, 1);
@@ -29,43 +34,43 @@ public class TestOux extends Circuit {
 		}
 	}
 
+	/*
+	 * Test selon les 4 combinaisons possibles, le test n'est pas généralisable
+	 * en l'état
+	 * 
+	 * @see projet.test.Testeur#tester()
+	 */
 	public void tester() {
-		// TODO A reimplement comme décrit dans l'interface
 
 		System.out.println("************\nTest du oux :\n************\n\n");
 
 		System.out.println(this);
 
 		try {
-			
 
 			// Test 0-0 -> 0
 
 			changerItr(3);
 			changerItr(4);
 			execute();
-			System.out.println( observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
-			
+			System.out.println(observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
+
 			// Test 0-1 -> 0
 			changerItr(4);
 			execute();
-			System.out.println( observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
-		
+			System.out.println(observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
+
 			// Test 1-0 -> 0
-			
+
 			changerItr(3);
 			changerItr(4);
 			execute();
-			System.out.println( observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
-			
+			System.out.println(observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
+
 			// Test 1-1 -> 0
 			changerItr(4);
 			execute();
-			System.out.println( observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
-
-		
-		
-			
+			System.out.println(observerItr(3) + " (+) " + observerItr(4) + " = " + observerLed(2));
 
 		} catch (CircuitNonCompletException | ComposantInconnuException | ActionInterditeException e) {
 			// TODO Auto-generated catch block

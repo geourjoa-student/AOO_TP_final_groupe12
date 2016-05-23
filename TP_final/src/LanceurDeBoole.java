@@ -12,7 +12,9 @@ public class LanceurDeBoole {
 	public static void main(String[] args) {
 		
 		
-		CircuitTesteur monCircuit = new CircuitTesteur();
+		//CircuitTesteur monCircuit = new CircuitTesteur();
+		
+		Circuit monCircuit = new Circuit("monCircuit");
 		
 		Composite nonComposite = new Composite("nomCompite", 2, 1, 1, 1);
 		nonComposite.ajouterComposant(new Non(1));
@@ -37,13 +39,13 @@ public class LanceurDeBoole {
 		}
 			
 		
-		monCircuit.tester();
+		//monCircuit.tester();
 		
 		System.out.println(monCircuit);
 		
-		/*Jdom monjj = new Jdom();
+		Jdom monjj = new Jdom();
 		
-		monjj.createDoc(monCircuit);*/
+		monjj.createDoc(monCircuit);
 		
 			
 		

@@ -1,11 +1,13 @@
 package projet.composant;
 
-
-import java.util.Iterator;
-
-import projet.port.PortEntree;
 import projet.port.PortSortie;
 
+/**
+ * @author anthony
+ *
+ *         Repréente le concept d'une composant électronique Gnd qui fournit un
+ *         niveau 0
+ */
 public class Vcc extends Generateur {
 	
 	//static final private int nbPortsSorties = 1;
@@ -28,30 +30,5 @@ public class Vcc extends Generateur {
 		this.id = id;
 	}
 
-	@Override
-	public String toString()
-	{
-		//String s = "<" + id + "| nomClasse (" + portsEntrees.length + "," + portsSorties.length + ")->";
-
-		String s = "<" + id + "| Vcc (" +  0 + "," +  portsSorties.length + ") -> ";
-
-		for (int i = 0; i < portsSorties.length; i++) 
-		{
-			s += "#" + portsSorties[i].getId_port() +"(";
-					
-			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
-				PortEntree pe = it.next();
-				s+=  pe.getProprietairePort().getId() + "#" + pe.getId_port();
-				
-				if(it.hasNext()){
-					s+= ",";
-				}
-			}		
-			s+=")";	
-		}
-
-		s += ">";
-
-		return s;
-	}
+	
 }

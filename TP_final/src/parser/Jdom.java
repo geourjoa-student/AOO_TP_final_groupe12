@@ -19,7 +19,7 @@ public class Jdom {
 
 	public void createDoc(Circuit c)
 	{
-		// On recupère le circuit, on va commencer par son nom
+		// On recupï¿½re le circuit, on va commencer par son nom
 		Element circuit = new Element("Circuit");
 		racine.addContent(circuit);
 		Attribute nom = new Attribute("nom", c.getNom());
@@ -30,7 +30,7 @@ public class Jdom {
 			System.out.println(composantCourant.getClass().getName());
 			// Si on a un composite
 			if (composantCourant instanceof Composite) {
-				// Lancer la récursion sur composite
+				// Lancer la rï¿½cursion sur composite
 				funComposite1((Circuit) composantCourant);
 
 			} else {
@@ -44,17 +44,17 @@ public class Jdom {
 				composant.setAttribute(type);
 
 				// On parcourt les connexions
-				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
+				for (int j = 0; j < composantCourant.getNbPortsSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie;
-					// Le try realise la gestion de l'exception soulevée en cas
-					// d'indice trop élevé
+					// Le try realise la gestion de l'exception soulevï¿½e en cas
+					// d'indice trop ï¿½levï¿½
 					try {
 						sortie = new Attribute("sortie",
 								Integer.toString(composantCourant.getNiemePortSortie(j).getId_port()));
 						connexion.setAttribute(sortie);
-						// On récupère la liste des Destinatiosn de chaque
+						// On rï¿½cupï¿½re la liste des Destinatiosn de chaque
 						// connexion
 						for (int k = 0; k < composantCourant.getNiemePortSortie(j).getListePortEntreeConnectes()
 								.size(); k++) {
@@ -78,13 +78,13 @@ public class Jdom {
 		}
 		// On affiche le resultat en console
 		affiche();
-		// On crée le fichier output
+		// On crï¿½e le fichier output
 		enregistre("output.xml");
 
 	}
 
 	/**
-	 * Meme fonction que ci dessus, pour la récursion/A AMELIORER
+	 * Meme fonction que ci dessus, pour la rï¿½cursion/A AMELIORER
 	 */
 	private void funComposite1(Circuit c)
 	{
@@ -92,16 +92,16 @@ public class Jdom {
 		racine.addContent(composite);
 		Attribute nomComposite = new Attribute("nom", ((Composite) c).getNom());
 		composite.setAttribute(nomComposite);
-		Attribute entreesComposite = new Attribute("entrees", Integer.toString(((Composite) c).getLengthEntrees()));
+		Attribute entreesComposite = new Attribute("entrees", Integer.toString(((Composite) c).getNbPortsSorties()));
 		composite.setAttribute(entreesComposite);
-		Attribute sortiesComposite = new Attribute("sorties", Integer.toString(((Composite) c).getLengthSorties()));
+		Attribute sortiesComposite = new Attribute("sorties", Integer.toString(((Composite) c).getNbPortsSorties()));
 		composite.setAttribute(sortiesComposite);
 
 		for (int i = 1; i <= c.getComposants().size(); i++) {
 			Composant composantCourant = c.getComposants().get(i);
 			if (composantCourant instanceof Composite) {
-				// On fait une récursion, t pour ça on se sert d'une autre
-				// fonction similaire (à améliorer)
+				// On fait une rï¿½cursion, t pour ï¿½a on se sert d'une autre
+				// fonction similaire (ï¿½ amï¿½liorer)
 				funComposite2((Circuit) composantCourant);
 
 			} else {
@@ -114,7 +114,7 @@ public class Jdom {
 				Attribute type = new Attribute("type", composantCourant.getClass().getName());
 				composant.setAttribute(type);
 
-				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
+				for (int j = 0; j < composantCourant.getNbPortsSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie;
@@ -144,8 +144,8 @@ public class Jdom {
 				// interface attibut des composites
 				Element interfaceES = new Element("Interface");
 				composite.addContent(interfaceES);
-				// Boucle parcourant les entrées/NON FINALISE
-				for (int x = 0; x < composantCourant.getLengthEntrees(); x++) {
+				// Boucle parcourant les entrï¿½es/NON FINALISE
+				for (int x = 0; x < composantCourant.getNbPortsEntrees(); x++) {
 					Element entreesInterface = new Element("Entree");
 					interfaceES.addContent(entreesInterface);
 					Attribute portNum = new Attribute("port", Integer.toString(x + 1));
@@ -173,7 +173,7 @@ public class Jdom {
 	}
 
 	/**
-	 * Meme fonction que ci dessus, pour la récursion/A AMELIORER
+	 * Meme fonction que ci dessus, pour la rï¿½cursion/A AMELIORER
 	 */
 	private void funComposite2(Circuit c)
 	{
@@ -181,15 +181,15 @@ public class Jdom {
 		racine.addContent(composite);
 		Attribute nomComposite = new Attribute("nom", ((Composite) c).getNom());
 		composite.setAttribute(nomComposite);
-		Attribute entreesComposite = new Attribute("entrees", Integer.toString(((Composite) c).getLengthEntrees()));
+		Attribute entreesComposite = new Attribute("entrees", Integer.toString(((Composite) c).getNbPortsEntrees()));
 		composite.setAttribute(entreesComposite);
-		Attribute sortiesComposite = new Attribute("sorties", Integer.toString(((Composite) c).getLengthSorties()));
+		Attribute sortiesComposite = new Attribute("sorties", Integer.toString(((Composite) c).getNbPortsSorties()));
 		composite.setAttribute(sortiesComposite);
 
 		for (int i = 1; i < c.getComposants().size(); i++) {
 			Composant composantCourant = c.getComposants().get(i);
 			if (composantCourant instanceof Composite) {
-				// Appel de la fonction ci-dessus pour la récursion
+				// Appel de la fonction ci-dessus pour la rï¿½cursion
 				funComposite1((Circuit) composantCourant);
 
 			} else {
@@ -201,7 +201,7 @@ public class Jdom {
 				Attribute type = new Attribute("type", composantCourant.getClass().getName());
 				composant.setAttribute(type);
 
-				for (int j = 0; j < composantCourant.getLengthSorties(); j++) {
+				for (int j = 0; j < composantCourant.getNbPortsSorties(); j++) {
 					Element connexion = new Element("Connexion");
 					composant.addContent(connexion);
 					Attribute sortie;
@@ -228,7 +228,7 @@ public class Jdom {
 				}
 				Element interfaceES = new Element("Interface");
 				composite.addContent(interfaceES);
-				for (int x = 0; x < composantCourant.getLengthEntrees(); x++) {
+				for (int x = 0; x < composantCourant.getNbPortsEntrees(); x++) {
 					Element entreesInterface = new Element("Entree");
 					interfaceES.addContent(entreesInterface);
 					Attribute portNum = new Attribute("port", Integer.toString(x + 1));
@@ -255,8 +255,8 @@ public class Jdom {
 	}
 
 	/**
-	 * Trouvé sur http://cynober.developpez.com/tutoriel/java/xml/jdom/, qui m'a
-	 * aidé tout le long très explicatif!
+	 * Trouvï¿½ sur http://cynober.developpez.com/tutoriel/java/xml/jdom/, qui m'a
+	 * aidï¿½ tout le long trï¿½s explicatif!
 	 */
 	static void affiche()
 	{

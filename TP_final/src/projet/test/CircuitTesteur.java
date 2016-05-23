@@ -9,7 +9,11 @@ import projet.composant.Itr;
 import projet.composant.Led;
 import projet.exception.CircuitNonCompletException;
 
-public class CircuitTesteur extends Circuit {
+/**
+ * @author anthony
+ * Circuit permettant de tester n'importe quel circuit complet et d'afficher les résulats des Leds en fonctions des différentes combinaisons d'interrupeur
+ */
+public class CircuitTesteur extends Circuit implements Testeur{
 
 	public CircuitTesteur() {
 		super("Circuit testeur");

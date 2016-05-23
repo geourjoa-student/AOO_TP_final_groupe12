@@ -1,5 +1,7 @@
 package projet.composant;
 
+import java.util.Iterator;
+
 import projet.exception.PortInconnuException;
 import projet.port.PortEntree;
 import projet.port.PortSortie;
@@ -59,5 +61,29 @@ public abstract class Elementaire implements Composant {
 		}
 
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+
+		String s = "<" + id + "| " + this.getClass().getSimpleName() +" (" + nbPortsEntree + "," + nbPortsSortie + ") -> ";
+
+		for (int i = 0; i < portsSorties.length; i++) {
+			s += "#" + portsSorties[i].getId_port() + "(";
+
+			for (Iterator<PortEntree> it = portsSorties[i].getListePortEntreeConnectes().iterator(); it.hasNext();) {
+				PortEntree pe = it.next();
+				s += pe.getProprietairePort().getId() + "#" + pe.getId_port();
+
+				if (it.hasNext()) {
+					s += ",";
+				}
+			}
+			s += ")";
+		}
+
+		s += ">";
+
+		return s;
 	}
 }
