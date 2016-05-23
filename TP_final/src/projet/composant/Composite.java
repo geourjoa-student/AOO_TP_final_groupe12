@@ -42,7 +42,7 @@ public class Composite extends Circuit implements Composant{
 		portsEntrees[numeroPortComposite].connecte();
 	}
 
-	public void définirPortSortieComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
+	public void definirPortSortieComposant(int idComposant, int numeroPortComposant, int numeroPortComposite) throws PortInconnuException {
 		//TODO verif
 		portsSorties[numeroPortComposite]=composants.get(idComposant).getNiemePortSortie(numeroPortComposant);
 	}

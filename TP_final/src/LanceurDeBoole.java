@@ -43,8 +43,8 @@ public class LanceurDeBoole {
 			add1b0.cabler(4, 0, 6, 1);
 			add1b0.cabler(5, 0, 7, 1);
 			
-			add1b0.définirPortSortieComposant(2, 0, 0);
-			add1b0.définirPortSortieComposant(7, 0, 1);
+			add1b0.definirPortSortieComposant(2, 0, 0);
+			add1b0.definirPortSortieComposant(7, 0, 1);
 			
 			add1b0.connecterPortEntreeComposant(1, 0, 0);
 			add1b0.connecterPortEntreeComposant(3, 0, 0);
@@ -79,8 +79,8 @@ public class LanceurDeBoole {
 			add1b1.cabler(4, 0, 6, 1);
 			add1b1.cabler(5, 0, 7, 1);
 			
-			add1b1.définirPortSortieComposant(2, 0, 0);
-			add1b1.définirPortSortieComposant(7, 0, 1);
+			add1b1.definirPortSortieComposant(2, 0, 0);
+			add1b1.definirPortSortieComposant(7, 0, 1);
 			
 			add1b1.connecterPortEntreeComposant(1, 0, 0);
 			add1b1.connecterPortEntreeComposant(3, 0, 0);
@@ -115,8 +115,8 @@ public class LanceurDeBoole {
 			add1b2.cabler(4, 0, 6, 1);
 			add1b2.cabler(5, 0, 7, 1);
 			
-			add1b2.définirPortSortieComposant(2, 0, 0);
-			add1b2.définirPortSortieComposant(7, 0, 1);
+			add1b2.definirPortSortieComposant(2, 0, 0);
+			add1b2.definirPortSortieComposant(7, 0, 1);
 			
 			add1b2.connecterPortEntreeComposant(1, 0, 0);
 			add1b2.connecterPortEntreeComposant(3, 0, 0);
@@ -151,8 +151,8 @@ public class LanceurDeBoole {
 			add1b3.cabler(4, 0, 6, 1);
 			add1b3.cabler(5, 0, 7, 1);
 			
-			add1b3.définirPortSortieComposant(2, 0, 0);
-			add1b3.définirPortSortieComposant(7, 0, 1);
+			add1b3.definirPortSortieComposant(2, 0, 0);
+			add1b3.definirPortSortieComposant(7, 0, 1);
 			
 			add1b3.connecterPortEntreeComposant(1, 0, 0);
 			add1b3.connecterPortEntreeComposant(3, 0, 0);
